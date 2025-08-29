@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Console do Amor ❤️</title>
+  <style>
+    body {
+      background: #0d0d0d;
+      color: #00ffcc;
+      font-family: "Courier New", monospace;
+      padding: 20px;
+    }
+    h1 {
+      color: #ff99cc;
+    }
+    #console {
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      padding: 20px;
+      min-height: 200px;
+      background: #1a1a1a;
+      overflow-y: auto;
+      white-space: pre-wrap;
+    }
+    #input {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      outline: none;
+      background: #0d0d0d;
+      color: #00ffcc;
+      font-family: inherit;
+      font-size: 16px;
+    }
+    .output {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌙 Console do Amor 🌙</h1>
+  <p>Digite comandos fofos e descubra nossos momentos especiais 💕</p>
+
+  <div id="console"></div>
+  <input id="input" type="text" placeholder="Digite um comando e aperte Enter...">
+
+  <script>
+    const consoleDiv = document.getElementById("console");
+    const input = document.getElementById("input");
+
+    const comandos = {
+      nossosimbolo: "Nosso símbolo é o Kindred, porque de verdade: nunca um sem o outro. Somos alma e corpo correndo lado a lado, como Lobo e Cordeiro.",
+      musica: "Nossa música é 'I Wanna Be Yours' do Arctic Monkeys. Toda vez que toca, é como se o mundo inteiro sumisse e só restasse nós dois.",
+      primeiravez: "Nossa primeira vez foi em 16/04/2025 e, meu amor, foi simplesmente mágica. Nada no mundo se compara àquela conexão.",
+      primeirobeijo: "Nosso primeiro beijo tímido, no aeroporto de Campina Grande em 14/04/2025, parecia cena de filme. E foi só o começo da nossa história.",
+      yakisoba: "Você fez yakisoba pra mim e eu amei tanto! O sabor não foi só da comida, mas do carinho que veio junto.",
+      deadpool: "Assistimos Deadpool juntos e, mesmo com toda a zoeira do filme, o que ficou marcado foram os nossos risos lado a lado.",
+      cinema: "Beijamos muito no cinema e cada beijo foi como se o tempo parasse. Melhor sessão da vida!",
+      outback: "Nosso almoço no Outback foi muito mais do que comida, foi um pedacinho da nossa história escrito com risadas e carinho.",
+      cafe: "Eu tomei café de verdade pela primeira vez porque você trouxe pra mim. Agora café tem gosto de você. ☕💕",
+      chimarrao: "Eu experimentei chimarrão graças a você. Agora, cada gole tem o gostinho dos nossos momentos juntos.",
+      apoio: "Você me ajuda todos os dias a superar meus traumas. Sem você, eu não teria encontrado tanta força.",
+      funkos: "Você me deu meus primeiros Funkos Pop, e cada um deles carrega um pedacinho do seu carinho comigo."
+    };
+
+    function printOutput(text) {
+      const div = document.createElement("div");
+      div.className = "output";
+      div.textContent = text;
+      consoleDiv.appendChild(div);
+      consoleDiv.scrollTop = consoleDiv.scrollHeight;
+    }
+
+    input.addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        const command = input.value.trim().toLowerCase();
+        if (comandos[command]) {
+          printOutput(">> " + command);
+          printOutput(comandos[command]);
+        } else {
+          printOutput(">> " + command);
+          printOutput("Comando não encontrado 💔. Digite algo como: nossosimbolo, musica, primeiravez, primeirobeijo, yakisoba, deadpool, cinema, outback, cafe, chimarrao, apoio, funkos.");
+        }
+        input.value = "";
+      }
+    });
+  </script>
+</body>
+</html>
