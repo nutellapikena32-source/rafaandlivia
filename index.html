@@ -69,162 +69,152 @@
     const input = document.getElementById("input");
 
     // Som fofo ao apertar Enter
-   const clickSound = new Audio('kindred.mp3');
+    const clickSound = new Audio('kindred.mp3');
 
     const comandos = {
-     const comandos = {
-  help: {
-    texto: "Comandos disponíveis: nossosimbolo, chimarrao, yakisoba, deadpool, primeirobeijo, primeiravez, outback, cafe, funkos, musica, amor, textinho, diasjuntos",
-    foto: null,
-    audio: null
-  },
+      help: {
+        texto: "Comandos disponíveis: nossosimbolo, chimarrao, yakisoba, deadpool, primeirobeijo, primeiravez, outback, cafe, funkos, musica, amor, textinho, diasjuntos",
+        foto: null,
+        audio: null
+      },
 
-  nossosimbolo: {
-    texto: `💞 Nosso símbolo é o Kindred, pois de fato: nunca um sem o outro. Somos alma e corpo correndo lado a lado 💞`,
-    foto: "kindred.jpg",
-    audio: "kindred.mp3"
-  },
+      nossosimbolo: {
+        texto: `💞 Nosso símbolo é o Kindred, pois de fato: nunca um sem o outro. Somos alma e corpo correndo lado a lado 💞`,
+        foto: "kindred.jpg",
+        audio: "kindred.mp3"
+      },
 
-  chimarrao: {
-    texto: `🧉 Tomei meu primeiro chimarrão graças a você, Rafa! Cada gole tem o gostinho dos nossos momentos juntos 💚`,
-    foto: "chimarrao.jpg",
-    audio: "chimarrao.mp3"
-  },
+      chimarrao: {
+        texto: `🧉 Tomei meu primeiro chimarrão graças a você, Rafa! Cada gole tem o gostinho dos nossos momentos juntos 💚`,
+        foto: "chimarrao.jpg",
+        audio: "chimarrao.mp3"
+      },
 
-  yakisoba: {
-    texto: `🍜 Aquele yakisoba que você fez foi tão gostoso quanto o seu carinho. Eu amei cada garfada 💜`,
-    foto: "yakisoba.jpg",
-    audio: "yakisoba.mp3"
-  },
+      yakisoba: {
+        texto: `🍜 Aquele yakisoba que você fez foi tão gostoso quanto o seu carinho. Eu amei cada garfada 💜`,
+        foto: "yakisoba.jpg",
+        audio: "yakisoba.mp3"
+      },
 
-  deadpool: {
-    texto: `🎬 Assistimos Deadpool juntos e foi perfeito, porque qualquer filme fica 1000x melhor ao seu lado 😍`,
-    foto: "deadpool.jpeg",
-    audio: null
-  },
+      deadpool: {
+        texto: `🎬 Assistimos Deadpool juntos e foi perfeito, porque qualquer filme fica 1000x melhor ao seu lado 😍`,
+        foto: "deadpool.jpeg",
+        audio: null
+      },
 
-  primeirobeijo: {
-    texto: `💋 Nosso primeiro beijo tímido no aeroporto de Campina Grande ainda me faz sentir borboletas na barriga 🥰`,
-    foto: "primeirobeijo.jpg",
-    audio: "beijo.mp3"
-  },
+      primeirobeijo: {
+        texto: `💋 Nosso primeiro beijo tímido no aeroporto de Campina Grande ainda me faz sentir borboletas na barriga 🥰`,
+        foto: "primeirobeijo.jpg",
+        audio: "beijo.mp3"
+      },
 
-  primeiravez: {
-    texto: `✨ Nossa primeira vez em 16/04/25 foi simplesmente mágica, Rafa. Um momento só nosso que guardo no coração 💜`,
-    foto: "primeiravez.jpg",
-    audio: "primeiravez.mp3"
-  },
+      primeiravez: {
+        texto: `✨ Nossa primeira vez em 16/04/25 foi simplesmente mágica, Rafa. Um momento só nosso que guardo no coração 💜`,
+        foto: "primeiravez.jpg",
+        audio: "primeiravez.mp3"
+      },
 
-  outback: {
-    texto: `🥩 Nosso almoço no Outback foi marcante, não pela comida, mas porque estávamos juntos, rindo e sendo nós 💕`,
-    foto: "outback.jpg",
-    audio: "outback.mp3"
-  },
+      outback: {
+        texto: `🥩 Nosso almoço no Outback foi marcante, não pela comida, mas porque estávamos juntos, rindo e sendo nós 💕`,
+        foto: "outback.jpg",
+        audio: "outback.mp3"
+      },
 
-  cafe: {
-    texto: `☕ Eu só tomei café de verdade porque você trouxe pra mim. Agora todo café tem gosto de você 💚`,
-    foto: "cafe.jpg",
-    audio: "cafe.mp3"
-  },
+      cafe: {
+        texto: `☕ Eu só tomei café de verdade porque você trouxe pra mim. Agora todo café tem gosto de você 💚`,
+        foto: "cafe.jpg",
+        audio: "cafe.mp3"
+      },
 
-  funkos: {
-    texto: `🧸 Você me deu meus primeiros Funkos Pop, e cada um carrega um pedacinho do nosso amor 💜`,
-    foto: "funkos.jpg",
-    audio: null
-  },
+      funkos: {
+        texto: `🧸 Você me deu meus primeiros Funkos Pop, e cada um carrega um pedacinho do nosso amor 💜`,
+        foto: "funkos.jpg",
+        audio: null
+      },
 
-  musica: {
-    texto: `🎶 Nossa música é 'I Wanna Be Yours' do Arctic Monkeys. Porque eu sou sua, e quero ser sua em todos os sentidos ❤️`,
-    foto: "iwannabeyours.jpg",
-    audio: "iwannabeyours.mp3"
-  },
+      musica: {
+        texto: `🎶 Nossa música é 'I Wanna Be Yours' do Arctic Monkeys. Porque eu sou sua, e quero ser sua em todos os sentidos ❤️`,
+        foto: "iwannabeyours.jpg",
+        audio: "iwannabeyours.mp3"
+      },
 
-  amor: {
-    texto: `💖 Rafa, você me ajuda todos os dias a superar meus traumas. Obrigada por ser meu porto seguro. Eu te amo infinitamente 💜`,
-    foto: null,
-    audio: "textinho.mp3"
-  },
+      amor: {
+        texto: `💖 Rafa, você me ajuda todos os dias a superar meus traumas. Obrigada por ser meu porto seguro. Eu te amo infinitamente 💜`,
+        foto: null,
+        audio: "textinho.mp3"
+      },
 
-  textinho: {
-    texto: `🥰 Meu amor, você não sabe a alegria que é pra mim poder te ter comigo. Vc foi a melhor coisa que me aconteceu, a melhor pessoa que já conheci, e quero poder colecionar cada vez mais momentos juntos e te proporcionar tudo que você merece. Eu te amo mais que tudo nesse mundo, e ter você comigo significa que estarei bem e que nada vai poder me abalar. Te quero pra sempre, meu bbzinho! 💞💜💖`,
-    foto: "textinho.jpg",
-    audio: "textinho.mp3"
-  },
+      textinho: {
+        texto: `🥰 Meu amor, você não sabe a alegria que é pra mim poder te ter comigo. Vc foi a melhor coisa que me aconteceu, a melhor pessoa que já conheci, e quero poder colecionar cada vez mais momentos juntos e te proporcionar tudo que você merece. Eu te amo mais que tudo nesse mundo, e ter você comigo significa que estarei bem e que nada vai poder me abalar. Te quero pra sempre, meu bbzinho! 💞💜💖`,
+        foto: "textinho.jpg",
+        audio: "textinho.mp3"
+      },
 
-  diasjuntos: {
-    texto: (function(){
-      const inicio = new Date("2024-12-01");
-      const hoje = new Date();
-      const diffDays = Math.floor((hoje - inicio) / (1000*60*60*24));
-      return `Nós estamos juntos há ${diffDays} dias! Cada dia com você é mágico 💜`;
-    })(),
-    foto: null,
-    audio: null
-  }
-};
-
+      diasjuntos: {
+        texto: (function(){
+          const inicio = new Date("2024-12-01");
+          const hoje = new Date();
+          const diffDays = Math.floor((hoje - inicio) / (1000*60*60*24));
+          return `Nós estamos juntos há ${diffDays} dias! Cada dia com você é mágico 💜`;
+        })(),
+        foto: null,
+        audio: null
+      }
     };
 
     function typeOutput(text, onComplete) {
-  const newLine = document.createElement("div");
-  newLine.classList.add("output");
-  terminal.insertBefore(newLine, input.parentElement);
+      const newLine = document.createElement("div");
+      newLine.classList.add("output");
+      terminal.insertBefore(newLine, input.parentElement);
 
-  let i = 0;
-  function type() {
-    if (i < text.length) {
-      newLine.innerHTML += text[i];
-      i++;
-      terminal.scrollTop = terminal.scrollHeight;
-      setTimeout(type, 20); // velocidade da digitação (ajusta se quiser)
-    } else {
-      if (typeof onComplete === "function") onComplete(newLine);
-    }
-  }
-  type();
-}
+      let i = 0;
+      function type() {
+        if (i < text.length) {
+          newLine.innerHTML += text[i];
+          i++;
+          terminal.scrollTop = terminal.scrollHeight;
+          setTimeout(type, 20);
+        } else {
+          if (typeof onComplete === "function") onComplete(newLine);
+        }
       }
       type();
     }
 
-    let currentAudio = null; // guarda o áudio que estiver tocando
+    let currentAudio = null;
 
     input.addEventListener("keydown", function(event) {
-  if (event.key === "Enter") {
-    const valor = input.value.trim().toLowerCase();
+      if (event.key === "Enter") {
+        const valor = input.value.trim().toLowerCase();
 
-    // som de clique geral (se você tiver definido clickSound)
-    if (typeof clickSound !== "undefined") {
-      clickSound.pause();
-      clickSound.currentTime = 0;
-      clickSound.play();
-    }
-
-    const cmd = comandos[valor];
-    if (cmd) {
-      typeOutput(`> ${input.value}\n${cmd.texto}`, function(newLine) {
-        // mostrar imagem, se existir
-        if (cmd.foto) {
-          const img = document.createElement("img");
-          img.src = cmd.foto;
-          img.className = "command-image";
-          newLine.appendChild(img);
+        if (clickSound) {
+          clickSound.pause();
+          clickSound.currentTime = 0;
+          clickSound.play();
         }
-        // tocar áudio específico, se existir
-        if (cmd.audio) {
-          if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; }
-          currentAudio = new Audio(cmd.audio);
-          currentAudio.play();
+
+        const cmd = comandos[valor];
+        if (cmd) {
+          typeOutput(`> ${input.value}\n${cmd.texto}`, function(newLine) {
+            if (cmd.foto) {
+              const img = document.createElement("img");
+              img.src = cmd.foto;
+              img.className = "command-image";
+              newLine.appendChild(img);
+            }
+            if (cmd.audio) {
+              if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; }
+              currentAudio = new Audio(cmd.audio);
+              currentAudio.play();
+            }
+          });
+        } else {
+          typeOutput(`> ${input.value}\nComando não encontrado 💔. Digite help para ver a lista.`);
         }
-      });
-    } else {
-      typeOutput(`> ${input.value}\nComando não encontrado 💔. Digite help para ver a lista.`);
-    }
 
-    input.value = "";
-  }
-});
-
+        input.value = "";
+      }
+    });
   </script>
 </body>
 </html>
