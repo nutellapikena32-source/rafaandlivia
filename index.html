@@ -62,10 +62,10 @@
     const input = document.getElementById("input");
 
     // Som fofo ao apertar Enter
-    const clickSound = new Audio('https://freesound.org/data/previews/341/341695_3248244-lq.mp3');
+   const clickSound = new Audio('love.mp3');
 
     const comandos = {
-      help: "Comandos disponíveis: nossosimbolo, chimarrao, yakisoba, deadpool, primeirobeijo, primeiraVez, almocoOutback, cafe, funkos, musica, amor, textinho",
+      help: "Comandos disponíveis: nossosimbolo, chimarrao, yakisoba, deadpool, primeirobeijo, primeiraVez, outback, cafe, funkos, musica, amor, textinho",
       
       nossosimbolo: "💞 Nosso símbolo é o Kindred, pois de fato: nunca um sem o outro. Somos alma e corpo correndo lado a lado 💞",
       
@@ -112,7 +112,9 @@
     input.addEventListener("keydown", function(event) {
       if(event.key === "Enter") {
         const valor = input.value.trim().toLowerCase();
-        clickSound.play();
+       clickSound.pause();
+clickSound.currentTime = 0;
+clickSound.play();
         if(comandos[valor]) {
           typeOutput(`> ${input.value}\n${comandos[valor]}`);
         } else {
