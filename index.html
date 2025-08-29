@@ -141,8 +141,8 @@
 
   amor: {
     texto: `💖 Rafa, você me ajuda todos os dias a superar meus traumas. Obrigada por ser meu porto seguro. Eu te amo infinitamente 💜`,
-    foto: "apoio.jpg",
-    audio: "apoio.mp3"
+    foto: null,
+    audio: "textinho.mp3"
   },
 
   textinho: {
@@ -165,37 +165,66 @@
 
     };
 
-    function typeOutput(text) {
-      const newLine = document.createElement("div");
-      newLine.classList.add("output");
-      terminal.insertBefore(newLine, input.parentElement);
+    function typeOutput(text, onComplete) {
+  const newLine = document.createElement("div");
+  newLine.classList.add("output");
+  terminal.insertBefore(newLine, input.parentElement);
 
-      let i = 0;
-      function type() {
-        if (i < text.length) {
-          newLine.innerHTML += text[i];
-          i++;
-          terminal.scrollTop = terminal.scrollHeight;
-          setTimeout(type, 20);
-        }
+  let i = 0;
+  function type() {
+    if (i < text.length) {
+      newLine.innerHTML += text[i];
+      i++;
+      terminal.scrollTop = terminal.scrollHeight;
+      setTimeout(type, 20); // velocidade da digitação (ajusta se quiser)
+    } else {
+      if (typeof onComplete === "function") onComplete(newLine);
+    }
+  }
+  type();
+}
       }
       type();
     }
 
+    let currentAudio = null; // guarda o áudio que estiver tocando
+
     input.addEventListener("keydown", function(event) {
-      if(event.key === "Enter") {
-        const valor = input.value.trim().toLowerCase();
-       clickSound.pause();
-clickSound.currentTime = 0;
-clickSound.play();
-        if(comandos[valor]) {
-          typeOutput(`> ${input.value}\n${comandos[valor]}`);
-        } else {
-          typeOutput(`> ${input.value}\nComando não encontrado 💔. Digite help para ver a lista.`);
+  if (event.key === "Enter") {
+    const valor = input.value.trim().toLowerCase();
+
+    // som de clique geral (se você tiver definido clickSound)
+    if (typeof clickSound !== "undefined") {
+      clickSound.pause();
+      clickSound.currentTime = 0;
+      clickSound.play();
+    }
+
+    const cmd = comandos[valor];
+    if (cmd) {
+      typeOutput(`> ${input.value}\n${cmd.texto}`, function(newLine) {
+        // mostrar imagem, se existir
+        if (cmd.foto) {
+          const img = document.createElement("img");
+          img.src = cmd.foto;
+          img.className = "command-image";
+          newLine.appendChild(img);
         }
-        input.value = "";
-      }
-    });
+        // tocar áudio específico, se existir
+        if (cmd.audio) {
+          if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; }
+          currentAudio = new Audio(cmd.audio);
+          currentAudio.play();
+        }
+      });
+    } else {
+      typeOutput(`> ${input.value}\nComando não encontrado 💔. Digite help para ver a lista.`);
+    }
+
+    input.value = "";
+  }
+});
+
   </script>
 </body>
 </html>
