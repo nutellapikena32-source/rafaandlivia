@@ -2,84 +2,114 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Console do Amor ❤️</title>
+  <title>Terminal do Amor 💜</title>
   <style>
     body {
-      background: #0d0d0d;
+      background-color: #0d0d0d;
       color: #00ffcc;
       font-family: "Courier New", monospace;
-      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
     }
-    h1 {
-      color: #ff99cc;
-    }
-    #console {
-      border: 1px solid #00ffcc;
-      border-radius: 10px;
-      padding: 20px;
-      min-height: 200px;
-      background: #1a1a1a;
+    #terminal {
+      background-color: #1a1a1a;
+      border-radius: 15px;
+      padding: 30px;
+      width: 80%;
+      max-width: 700px;
+      height: 70%;
       overflow-y: auto;
-      white-space: pre-wrap;
+      box-shadow: 0px 0px 15px #00ffcc;
     }
-    #input {
-      width: 100%;
-      padding: 10px;
+    .output {
+      margin: 10px 0;
+    }
+    input {
+      background: none;
       border: none;
-      outline: none;
-      background: #0d0d0d;
       color: #00ffcc;
       font-family: inherit;
       font-size: 16px;
+      width: 100%;
+      outline: none;
     }
-    .output {
-      margin: 5px 0;
+    .prompt {
+      color: #ff66cc;
     }
   </style>
 </head>
 <body>
-  <h1>🌙 Console do Amor 🌙</h1>
-  <p>Digite comandos fofos e descubra nossos momentos especiais 💕</p>
-
-  <div id="console"></div>
-  <input id="input" type="text" placeholder="Digite um comando e aperte Enter...">
+  <div id="terminal">
+    <div class="output">💜 Bem-vindo ao <b>Terminal do Amor</b>, Rafa!</div>
+    <div class="output">Digite <span style="color:#ff66cc;">help()</span> para ver os comandos.</div>
+    <div>
+      <span class="prompt">rafa@mozao:~$ </span><input id="input" autofocus>
+    </div>
+  </div>
 
   <script>
-    const consoleDiv = document.getElementById("console");
+    const terminal = document.getElementById("terminal");
     const input = document.getElementById("input");
 
+    // Som ao apertar Enter (opcional)
+    const clickSound = new Audio('https://freesound.org/data/previews/341/341695_3248244-lq.mp3'); // ex. som de clique fofo
+
     const comandos = {
-      nossosimbolo: "Nosso símbolo é o Kindred, porque de verdade: nunca um sem o outro. Somos alma e corpo correndo lado a lado, como Lobo e Cordeiro.",
-      musica: "Nossa música é 'I Wanna Be Yours' do Arctic Monkeys. Toda vez que toca, é como se o mundo inteiro sumisse e só restasse nós dois.",
-      primeiravez: "Nossa primeira vez foi em 16/04/2025 e, meu amor, foi simplesmente mágica. Nada no mundo se compara àquela conexão.",
-      primeirobeijo: "Nosso primeiro beijo tímido, no aeroporto de Campina Grande em 14/04/2025, parecia cena de filme. E foi só o começo da nossa história.",
-      yakisoba: "Você fez yakisoba pra mim e eu amei tanto! O sabor não foi só da comida, mas do carinho que veio junto.",
-      deadpool: "Assistimos Deadpool juntos e, mesmo com toda a zoeira do filme, o que ficou marcado foram os nossos risos lado a lado.",
-      cinema: "Beijamos muito no cinema e cada beijo foi como se o tempo parasse. Melhor sessão da vida!",
-      outback: "Nosso almoço no Outback foi muito mais do que comida, foi um pedacinho da nossa história escrito com risadas e carinho.",
-      cafe: "Eu tomei café de verdade pela primeira vez porque você trouxe pra mim. Agora café tem gosto de você. ☕💕",
-      chimarrao: "Eu experimentei chimarrão graças a você. Agora, cada gole tem o gostinho dos nossos momentos juntos.",
-      apoio: "Você me ajuda todos os dias a superar meus traumas. Sem você, eu não teria encontrado tanta força.",
-      funkos: "Você me deu meus primeiros Funkos Pop, e cada um deles carrega um pedacinho do seu carinho comigo."
+      help: "Comandos disponíveis: <br> - nossosimbolo() <br> - chimarrao() <br> - yakisoba() <br> - deadpool() <br> - primeirobeijo() <br> - primeiraVez() <br> - almocoOutback() <br> - cafe() <br> - funkos() <br> - musica() <br> - amor() <br> - textinho()",
+      
+      nossosimbolo: "💞 Nosso símbolo é o Kindred, pois de fato: nunca um sem o outro. Somos alma e corpo correndo lado a lado 💞",
+      
+      chimarrao: "🧉 Tomei meu primeiro chimarrão graças a você, Rafa! Cada gole tem o gostinho dos nossos momentos juntos 💚",
+      
+      yakisoba: "🍜 Aquele yakisoba que você fez foi tão gostoso quanto o seu carinho. Eu amei cada garfada 💜",
+      
+      deadpool: "🎬 Assistimos Deadpool juntos e foi perfeito, porque qualquer filme fica 1000x melhor ao seu lado 😍",
+      
+      primeirobeijo: "💋 Nosso primeiro beijo tímido no aeroporto de Campina Grande ainda me faz sentir borboletas na barriga 🥰",
+      
+      primeiraVez: "✨ Nossa primeira vez em 16/04/25 foi simplesmente mágica, Rafa. Um momento só nosso que guardo no coração 💜",
+      
+      almocoOutback: "🥩 Nosso almoço no Outback foi marcante, não pela comida, mas porque estávamos juntos, rindo e sendo nós 💕",
+      
+      cafe: "☕ Eu só tomei café de verdade porque você trouxe pra mim. Agora todo café tem gosto de você 💚",
+      
+      funkos: "🧸 Você me deu meus primeiros Funkos Pop, e cada um carrega um pedacinho do nosso amor 💜",
+      
+      musica: "🎶 Nossa música é 'I Wanna Be Yours' do Arctic Monkeys. Porque eu sou sua, e quero ser sua em todos os sentidos ❤️",
+      
+      amor: "💖 Rafa, você me ajuda todos os dias a superar meus traumas. Obrigada por ser meu porto seguro. Eu te amo infinitamente 💜",
+      
+      textinho: "🥰 Meu amor, você não sabe a alegria que é pra mim poder te ter comigo. Vc foi a melhor coisa que me aconteceu, a melhor pessoa que já conheci, e quero poder colecionar cada vez mais momentos juntos e te proporcionar tudo que você merece. Eu te amo mais que tudo nesse mundo, e ter você comigo significa que estarei bem e que nada vai poder me abalar. Te quero pra sempre, meu bbzinho! 💞💜💖"
     };
 
-    function printOutput(text) {
-      const div = document.createElement("div");
-      div.className = "output";
-      div.textContent = text;
-      consoleDiv.appendChild(div);
-      consoleDiv.scrollTop = consoleDiv.scrollHeight;
+    function typeOutput(text) {
+      const newLine = document.createElement("div");
+      newLine.classList.add("output");
+      terminal.insertBefore(newLine, input.parentElement);
+
+      let i = 0;
+      function type() {
+        if (i < text.length) {
+          newLine.innerHTML += text[i];
+          i++;
+          terminal.scrollTop = terminal.scrollHeight;
+          setTimeout(type, 20); // velocidade da digitação
+        }
+      }
+      type();
     }
 
     input.addEventListener("keydown", function(event) {
-      if (event.key === "Enter") {
-        const command = input.value.trim().toLowerCase();
-        if (comandos[command]) {
-          printOutput(">> " + command);
-          printOutput(comandos[command]);
+      if(event.key === "Enter") {
+        const valor = input.value.trim().replace("()", "");
+        clickSound.play(); // toca som fofo
+        if(comandos[valor]) {
+          typeOutput(`> ${input.value}\n${comandos[valor]}`);
         } else {
-          printOutput(">> " + command);
-          printOutput("Comando não encontrado 💔. Digite algo como: nossosimbolo, musica, primeiravez, primeirobeijo, yakisoba, deadpool, cinema, outback, cafe, chimarrao, apoio, funkos.");
+          typeOutput(`> ${input.value}\nComando não encontrado 💔. Digite help() para ver a lista.`);
         }
         input.value = "";
       }
