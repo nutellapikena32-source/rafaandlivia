@@ -68,9 +68,6 @@
     const terminal = document.getElementById("terminal");
     const input = document.getElementById("input");
 
-    // Som fofo ao apertar Enter
-    const clickSound = new Audio('kindred.mp3');
-
     const comandos = {
       help: {
         texto: "Comandos disponíveis: nossosimbolo, chimarrao, yakisoba, deadpool, primeirobeijo, primeiravez, outback, cafe, funkos, musica, amor, textinho, diasjuntos",
@@ -186,12 +183,6 @@
     input.addEventListener("keydown", function(event) {
       if (event.key === "Enter") {
         const valor = input.value.trim().toLowerCase();
-
-        if (clickSound) {
-          clickSound.pause();
-          clickSound.currentTime = 0;
-          clickSound.play();
-        }
 
         const cmd = comandos[valor];
         if (cmd) {
