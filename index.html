@@ -65,7 +65,7 @@
    const clickSound = new Audio('love.mp3');
 
     const comandos = {
-      help: "Comandos disponíveis: nossosimbolo, chimarrao, yakisoba, deadpool, primeirobeijo, primeiraVez, outback, cafe, funkos, musica, amor, textinho",
+      help: "Comandos disponíveis: nossosimbolo, chimarrao, yakisoba, deadpool, primeirobeijo, primeiraVez, outback, cafe, diasjuntos, funkos, musica, amor, textinho",
       
       nossosimbolo: "💞 Nosso símbolo é o Kindred, pois de fato: nunca um sem o outro. Somos alma e corpo correndo lado a lado 💞",
       
@@ -82,6 +82,15 @@
       outback: "🥩 Nosso almoço no Outback foi marcante, não pela comida, mas porque estávamos juntos, rindo e sendo nós 💕 (e eu me sujando toooda tambem rs)",
       
       cafe: "☕ Eu só tomei café de verdade porque você trouxe pra mim. Agora todo café tem gosto de você 💚",
+
+      diasjuntos: (() => {
+    const inicio = new Date("2024-12-01"); // data que vocês começaram
+    const hoje = new Date(); // data atual do site
+    const diffTime = hoje - inicio; // diferença em milissegundos
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)); // converter para dias
+    return `Nós estamos juntos há ${diffDays} dias! Cada dia com você é mágico 💜`;
+})(),
+
       
       funkos: "🧸 Você me deu meus primeiros Funkos Pop, e cada um carrega um pedacinho do nosso amor 💜",
       
