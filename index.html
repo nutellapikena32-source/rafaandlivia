@@ -42,9 +42,9 @@ body {
 }
 
 .output {
-  margin: 8px 0;
+  margin: 12px 0;
   line-height: 1.5;
-  color: #ffffff; /* letras brancas */
+  color: #ffffff; /* Letras brancas */
 }
 
 input {
@@ -73,17 +73,16 @@ input {
   border-top: 1px solid #00aaff;
 }
 
-/* Fotos menores */
+/* Fotos um pouco maiores e legíveis */
 .command-image {
-  max-width: 250px;
-  max-height: 200px;
+  max-width: 400px;
+  max-height: 300px;
   border-radius: 15px;
   margin-top: 10px;
   display: block;
   box-shadow: 0 0 15px #00aaff;
 }
 
-/* Scroll terminal */
 #terminal::-webkit-scrollbar {
   width: 10px;
 }
@@ -123,7 +122,6 @@ input {
   margin: 5px 0;
   line-height: 1.4;
   font-size: 1em;
-  color: #ffffff;
 }
 
 /* Hearts atrás do terminal */
@@ -163,6 +161,7 @@ input {
   </div>
 </div>
 
+<!-- Menu lateral fixo -->
 <div id="menu-lateral">
   <h2>💖Menu de Comandos💖</h2>
   <p>nossosimbolo</p>
@@ -181,59 +180,63 @@ input {
 </div>
 
 <script>
-const terminal=document.getElementById("terminal");
-const input=document.getElementById("input");
+const terminal = document.getElementById("terminal");
+const input = document.getElementById("input");
 
-const comandos={
-  help:{texto:"Comandos disponíveis: nossosimbolo, chimarrao, yakisoba, deadpool, primeirobeijo, primeiravez, outback, cafe, funkos, musica, amor, textinho, diasjuntos", foto:null, audio:null},
-  nossosimbolo:{texto:`💞 Nosso símbolo é o Kindred, pois de fato: nunca um sem o outro. Somos alma e corpo correndo lado a lado 💞`, foto:"kindred.jpg", audio:"kindred.mp3"},
-  chimarrao:{texto:`🧉 Tomei meu primeiro chimarrão graças a você, Rafa! Cada gole tem o gostinho dos nossos momentos juntos 💚`, foto:"chimarrao.jpg", audio:"chimarrao.mp3"},
-  yakisoba:{texto:`🍜 Aquele yakisoba que você fez foi tão gostoso quanto o seu carinho. Eu amei cada garfada 💜`, foto:"yakisoba.jpg", audio:"yakisoba.mp3"},
-  deadpool:{texto:`🎬 Assistimos Deadpool juntos e foi perfeito, porque qualquer filme fica 1000x melhor ao seu lado 😍`, foto:"deadpool.jpeg", audio:"deadpool.mp3"},
-  primeirobeijo:{texto:`💋 Nosso primeiro beijo tímido no aeroporto de Campina Grande ainda me faz sentir borboletas na barriga 🥰`, foto:"primeirobeijo.jpg", audio:"beijo.mp3"},
-  primeiravez:{texto:`✨ Nossa primeira vez em 16/04/25 foi simplesmente mágica, Rafa. Um momento só nosso que guardo no coração 💜`, foto:"primeiravez.jpg", audio:"primeiravez.mp3"},
-  outback:{texto:`🥩 Nosso almoço no Outback foi marcante, não pela comida, mas porque estávamos juntos, rindo e sendo nós 💕`, foto:"outback.jpg", audio:"outback.mp3"},
-  cafe:{texto:`☕ Eu só tomei café de verdade porque você trouxe pra mim. Agora todo café tem gosto de você 💚`, foto:"cafe.jpg", audio:"cafe.mp3"},
-  funkos:{texto:`🧸 Você me deu meus primeiros Funkos Pop, e cada um carrega um pedacinho do nosso amor 💜`, foto:"funkos.jpg", audio:null},
-  musica:{texto:`🎶 Nossa música é 'I Wanna Be Yours' do Arctic Monkeys. Porque eu sou sua, e quero ser sua em todos os sentidos ❤️`, foto:"iwannabeyours.jpg", audio:"iwannabeyours.mp3"},
-  amor:{texto:`💖 Rafa, você me ajuda todos os dias a superar meus traumas. Obrigada por ser meu porto seguro. Eu te amo infinitamente 💜`, foto:"amor.jpg", audio:"textinho.mp3"},
-  textinho:{texto:`🥰 Meu amor, você não sabe a alegria que é pra mim poder te ter comigo. Vc foi a melhor coisa que me aconteceu, a melhor pessoa que já conheci, e quero poder colecionar cada vez mais momentos juntos e te proporcionar tudo que você merece. Eu te amo mais que tudo nesse mundo, e ter você comigo significa que estarei bem e que nada vai poder me abalar. Te quero pra sempre, meu bbzinho! 💞💜💖`, foto:"textinho.jpg", audio:"textinho.mp3"},
-  diasjuntos:{texto:"", foto:"diasjuntos.jpg", audio:"diasjuntos.mp3"}
+const comandos = {
+  help: { texto: "Comandos disponíveis: nossosimbolo, chimarrao, yakisoba, deadpool, primeirobeijo, primeiravez, outback, cafe, funkos, musica, amor, textinho, diasjuntos", foto: null, audio: null },
+  nossosimbolo: { texto: `💞 Nosso símbolo é o Kindred, pois de fato: nunca um sem o outro. Somos alma e corpo correndo lado a lado 💞`, foto: "kindred.jpg", audio: "kindred.mp3" },
+  chimarrao: { texto: `🧉 Tomei meu primeiro chimarrão graças a você, Rafa! Cada gole tem o gostinho dos nossos momentos juntos 💚`, foto: "chimarrao.jpg", audio: "chimarrao.mp3" },
+  yakisoba: { texto: `🍜 Aquele yakisoba que você fez foi tão gostoso quanto o seu carinho. Eu amei cada garfada 💜`, foto: "yakisoba.jpg", audio: "yakisoba.mp3" },
+  deadpool: { texto: `🎬 Assistimos Deadpool juntos e foi perfeito, porque qualquer filme fica 1000x melhor ao seu lado 😍`, foto: "deadpool.jpeg", audio: "deadpool.mp3" },
+  primeirobeijo: { texto: `💋 Nosso primeiro beijo tímido no aeroporto de Campina Grande ainda me faz sentir borboletas na barriga 🥰`, foto: "primeirobeijo.jpg", audio: "beijo.mp3" },
+  primeiravez: { texto: `✨ Nossa primeira vez em 16/04/25 foi simplesmente mágica, Rafa. Um momento só nosso que guardo no coração 💜`, foto: "primeiravez.jpg", audio: "primeiravez.mp3" },
+  outback: { texto: `🥩 Nosso almoço no Outback foi marcante, não pela comida, mas porque estávamos juntos, rindo e sendo nós 💕`, foto: "outback.jpg", audio: "outback.mp3" },
+  cafe: { texto: `☕ Eu só tomei café de verdade porque você trouxe pra mim. Agora todo café tem gosto de você 💚`, foto: "cafe.jpg", audio: "cafe.mp3" },
+  funkos: { texto: `🧸 Você me deu meus primeiros Funkos Pop, e cada um carrega um pedacinho do nosso amor 💜`, foto: "funkos.jpg", audio: null },
+  musica: { texto: `🎶 Nossa música é 'I Wanna Be Yours' do Arctic Monkeys. Porque eu sou sua, e quero ser sua em todos os sentidos ❤️`, foto: "iwannabeyours.jpg", audio: "iwannabeyours.mp3" },
+  amor: { texto: `💖 Rafa, você me ajuda todos os dias a superar meus traumas. Obrigada por ser meu porto seguro. Eu te amo infinitamente 💜`, foto: "amor.jpg", audio: "textinho.mp3" },
+  textinho: { texto: `🥰 Meu amor, você não sabe a alegria que é pra mim poder te ter comigo. Vc foi a melhor coisa que me aconteceu, a melhor pessoa que já conheci, e quero poder colecionar cada vez mais momentos juntos e te proporcionar tudo que você merece. Eu te amo mais que tudo nesse mundo, e ter você comigo significa que estarei bem e que nada vai poder me abalar. Te quero pra sempre, meu bbzinho! 💞💜💖`, foto: "textinho.jpg", audio: "textinho.mp3" },
+  diasjuntos: { texto: "", foto: "diasjuntos.jpg", audio: "diasjuntos.mp3" }
 };
 
-function typeOutput(text,onComplete){
-  const newLine=document.createElement("div");
+function typeOutput(text, onComplete){
+  const newLine = document.createElement("div");
   newLine.classList.add("output");
-  terminal.insertBefore(newLine,document.getElementById("input-container"));
+  terminal.insertBefore(newLine, document.getElementById("input-container"));
   let i=0;
   function type(){
-    if(i<text.length){newLine.innerHTML+=text[i++];terminal.scrollTop=terminal.scrollHeight;setTimeout(type,20);}
-    else if(onComplete) onComplete(newLine);
+    if(i<text.length){
+      newLine.innerHTML += text[i++];
+      terminal.scrollTop = terminal.scrollHeight;
+      setTimeout(type,20);
+    } else if(onComplete) onComplete(newLine);
   }
   type();
 }
 
-let currentAudio=null;
+let currentAudio = null;
 
-input.addEventListener("keydown",function(event){
-  if(event.key==="Enter"){
-    const valor=input.value.trim().toLowerCase();
-    const cmd=comandos[valor];
+input.addEventListener("keydown", function(event){
+  if(event.key === "Enter"){
+    const valor = input.value.trim().toLowerCase();
+    const cmd = comandos[valor];
     if(cmd){
-      typeOutput(`> ${input.value}\n`,function(newLine){
+      typeOutput(`> ${input.value}\n`, function(newLine){
         if(cmd.foto){
-          const img=document.createElement("img");
-          img.src=cmd.foto;
-          img.className="command-image";
+          const img = document.createElement("img");
+          img.src = cmd.foto;
+          img.className = "command-image";
           newLine.appendChild(img);
         }
         if(cmd.audio){
           if(currentAudio){ currentAudio.pause(); currentAudio.currentTime=0; }
-          currentAudio=new Audio(cmd.audio);
+          currentAudio = new Audio(cmd.audio);
           currentAudio.play();
         }
+
         if(valor==="diasjuntos"){
-          newLine.innerHTML+=`Nós estamos juntos há <span id="contador"></span> 💜`;
+          newLine.innerHTML += `Nós estamos juntos há <span id="contador"></span> 💜`;
           atualizarContador();
         } else {
           let i=0;
@@ -294,6 +297,5 @@ function atualizarContador(){
 }
 setInterval(atualizarContador,1000);
 </script>
-
 </body>
 </html>
