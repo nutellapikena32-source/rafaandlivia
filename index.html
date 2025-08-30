@@ -9,7 +9,7 @@
       padding: 0;
       height: 100vh;
       font-family: "Courier New", monospace;
-      background: linear-gradient(135deg, #000000, #001f4d); /* preto + azul escuro */
+      background: linear-gradient(135deg, #000000, #001f4d);
       color: #ffffff;
       display: flex;
       justify-content: center;
@@ -17,11 +17,10 @@
       overflow: hidden;
     }
 
-    /* Terminal central */
     #terminal {
       width: 85%;
       height: 85%;
-      background-color: rgba(0, 0, 50, 0.9); /* azul escuro translúcido */
+      background-color: rgba(0, 0, 50, 0.9);
       border-radius: 20px;
       padding: 20px 30px 80px 30px;
       box-shadow: 0 0 30px #ffffff, 0 0 60px #00aaff inset;
@@ -29,7 +28,7 @@
       flex-direction: column;
       overflow-y: auto;
       position: relative;
-      z-index: 10; /* fica acima dos corações */
+      z-index: 10;
     }
 
     .title {
@@ -80,7 +79,6 @@
       box-shadow: 0 0 15px #00aaff;
     }
 
-    /* Scroll bonito */
     #terminal::-webkit-scrollbar {
       width: 10px;
     }
@@ -93,20 +91,17 @@
       border-radius: 5px;
     }
 
-    /* Corações caindo */
     .heart {
       position: fixed;
       top: -2em;
       font-size: 1.5em;
       pointer-events: none;
       animation: fall linear forwards;
-      z-index: 1; /* atrás do terminal */
+      z-index: 1;
     }
 
     @keyframes fall {
-      to {
-        transform: translateY(110vh);
-      }
+      to { transform: translateY(110vh); }
     }
   </style>
 </head>
@@ -115,7 +110,6 @@
     <div class="title">💙 Console do Amor 💙</div>
     <div class="output">Bem-vindo ao terminal fofo, Rafa! 😍</div>
     <div class="output">Digite <span style="color:#00aaff;">help</span> para ver os comandos.</div>
-
     <div id="input-container">
       <span class="prompt"> </span>
       <input id="input" autofocus>
@@ -127,76 +121,20 @@
     const input = document.getElementById("input");
 
     const comandos = {
-      help: {
-        texto: "Comandos disponíveis: nossosimbolo, chimarrao, yakisoba, deadpool, primeirobeijo, primeiravez, outback, cafe, funkos, musica, amor, textinho, diasjuntos",
-        foto: null,
-        audio: null
-      },
-      nossosimbolo: {
-        texto: `💞 Nosso símbolo é o Kindred, pois de fato: nunca um sem o outro. Somos alma e corpo correndo lado a lado 💞`,
-        foto: "kindred.jpg",
-        audio: "kindred.mp3"
-      },
-      chimarrao: {
-        texto: `🧉 Tomei meu primeiro chimarrão graças a você, Rafa! Cada gole tem o gostinho dos nossos momentos juntos 💚`,
-        foto: "chimarrao.jpg",
-        audio: "chimarrao.mp3"
-      },
-      yakisoba: {
-        texto: `🍜 Aquele yakisoba que você fez foi tão gostoso quanto o seu carinho. Eu amei cada garfada 💜`,
-        foto: "yakisoba.jpg",
-        audio: "yakisoba.mp3"
-      },
-      deadpool: {
-        texto: `🎬 Assistimos Deadpool juntos e foi perfeito, porque qualquer filme fica 1000x melhor ao seu lado 😍`,
-        foto: "deadpool.jpeg",
-        audio: null
-      },
-      primeirobeijo: {
-        texto: `💋 Nosso primeiro beijo tímido no aeroporto de Campina Grande ainda me faz sentir borboletas na barriga 🥰`,
-        foto: "primeirobeijo.jpg",
-        audio: "beijo.mp3"
-      },
-      primeiravez: {
-        texto: `✨ Nossa primeira vez em 16/04/25 foi simplesmente mágica, Rafa. Um momento só nosso que guardo no coração 💜`,
-        foto: "primeiravez.jpg",
-        audio: "primeiravez.mp3"
-      },
-      outback: {
-        texto: `🥩 Nosso almoço no Outback foi marcante, não pela comida, mas porque estávamos juntos, rindo e sendo nós 💕`,
-        foto: "outback.jpg",
-        audio: "outback.mp3"
-      },
-      cafe: {
-        texto: `☕ Eu só tomei café de verdade porque você trouxe pra mim. Agora todo café tem gosto de você 💚`,
-        foto: "cafe.jpg",
-        audio: "cafe.mp3"
-      },
-      funkos: {
-        texto: `🧸 Você me deu seus primeiros Funkos Pop, e cada um carrega um pedacinho do nosso amor 💜`,
-        foto: "funkos.jpg",
-        audio: null
-      },
-      musica: {
-        texto: `🎶 Nossa música é 'I Wanna Be Yours' do Arctic Monkeys. Porque eu sou sua, e quero ser sua em todos os sentidos ❤️`,
-        foto: "iwannabeyours.jpg",
-        audio: "iwannabeyours.mp3"
-      },
-      amor: {
-        texto: `💖 Rafa, você me ajuda todos os dias a superar meus traumas. Obrigada por ser meu porto seguro. Eu te amo infinitamente 💜`,
-        foto: null,
-        audio: "textinho.mp3"
-      },
-      textinho: {
-        texto: `🥰 Meu amor, você não sabe a alegria que é pra mim poder te ter comigo. Vc foi a melhor coisa que me aconteceu, a melhor pessoa que já conheci, e quero poder colecionar cada vez mais momentos juntos e te proporcionar tudo que você merece. Eu te amo mais que tudo nesse mundo, e ter você comigo significa que estarei bem e que nada vai poder me abalar. Te quero pra sempre, meu bbzinho! 💞💜💖`,
-        foto: "textinho.jpg",
-        audio: "textinho.mp3"
-      },
-      diasjuntos: {
-        texto: `Nós estamos juntos há <span id="contador"></span> 💜`,
-        foto: null,
-        audio: null
-      }
+      help: { texto: "Comandos disponíveis: nossosimbolo, chimarrao, yakisoba, deadpool, primeirobeijo, primeiravez, outback, cafe, funkos, musica, amor, textinho, diasjuntos", foto: null, audio: null },
+      nossosimbolo: { texto: `💞 Nosso símbolo é o Kindred, pois de fato: nunca um sem o outro. Somos alma e corpo correndo lado a lado 💞`, foto: "kindred.jpg", audio: "kindred.mp3" },
+      chimarrao: { texto: `🧉 Tomei meu primeiro chimarrão graças a você, Rafa! Cada gole tem o gostinho dos nossos momentos juntos 💚`, foto: "chimarrao.jpg", audio: "chimarrao.mp3" },
+      yakisoba: { texto: `🍜 Aquele yakisoba que você fez foi tão gostoso quanto o seu carinho. Eu amei cada garfada 💜`, foto: "yakisoba.jpg", audio: "yakisoba.mp3" },
+      deadpool: { texto: `🎬 Assistimos Deadpool juntos e foi perfeito, porque qualquer filme fica 1000x melhor ao seu lado 😍`, foto: "deadpool.jpeg", audio: null },
+      primeirobeijo: { texto: `💋 Nosso primeiro beijo tímido no aeroporto de Campina Grande ainda me faz sentir borboletas na barriga 🥰`, foto: "primeirobeijo.jpg", audio: "beijo.mp3" },
+      primeiravez: { texto: `✨ Nossa primeira vez em 16/04/25 foi simplesmente mágica, Rafa. Um momento só nosso que guardo no coração 💜`, foto: "primeiravez.jpg", audio: "primeiravez.mp3" },
+      outback: { texto: `🥩 Nosso almoço no Outback foi marcante, não pela comida, mas porque estávamos juntos, rindo e sendo nós 💕`, foto: "outback.jpg", audio: "outback.mp3" },
+      cafe: { texto: `☕ Eu só tomei café de verdade porque você trouxe pra mim. Agora todo café tem gosto de você 💚`, foto: "cafe.jpg", audio: "cafe.mp3" },
+      funkos: { texto: `🧸 Você me deu meus primeiros Funkos Pop, e cada um carrega um pedacinho do nosso amor 💜`, foto: "funkos.jpg", audio: null },
+      musica: { texto: `🎶 Nossa música é 'I Wanna Be Yours' do Arctic Monkeys. Porque eu sou sua, e quero ser sua em todos os sentidos ❤️`, foto: "iwannabeyours.jpg", audio: "iwannabeyours.mp3" },
+      amor: { texto: `💖 Rafa, você me ajuda todos os dias a superar meus traumas. Obrigada por ser meu porto seguro. Eu te amo infinitamente 💜`, foto: null, audio: "textinho.mp3" },
+      textinho: { texto: `🥰 Meu amor, você não sabe a alegria que é pra mim poder te ter comigo. Vc foi a melhor coisa que me aconteceu, a melhor pessoa que já conheci, e quero poder colecionar cada vez mais momentos juntos e te proporcionar tudo que você merece. Eu te amo mais que tudo nesse mundo, e ter você comigo significa que estarei bem e que nada vai poder me abalar. Te quero pra sempre, meu bbzinho! 💞💜💖`, foto: "textinho.jpg", audio: "textinho.mp3" },
+      diasjuntos: { texto: ``, foto: null, audio: null }
     };
 
     function typeOutput(text, onComplete) {
@@ -226,7 +164,7 @@
         const cmd = comandos[valor];
 
         if (cmd) {
-          typeOutput(`> ${input.value}\n${cmd.texto}`, function(newLine) {
+          typeOutput(`> ${input.value}\n`, function(newLine) {
             if (cmd.foto) {
               const img = document.createElement("img");
               img.src = cmd.foto;
@@ -238,9 +176,21 @@
               currentAudio = new Audio(cmd.audio);
               currentAudio.play();
             }
-            // CORREÇÃO: atualiza o contador ao vivo
+
             if (valor === "diasjuntos") {
-              atualizarContador(); // primeira atualização imediata
+              newLine.innerHTML += `Nós estamos juntos há <span id="contador"></span> 💜`;
+              atualizarContador();
+            } else {
+              let i = 0;
+              function type() {
+                if (i < cmd.texto.length) {
+                  newLine.innerHTML += cmd.texto[i];
+                  i++;
+                  terminal.scrollTop = terminal.scrollHeight;
+                  setTimeout(type, 20);
+                }
+              }
+              type();
             }
           });
         } else {
@@ -251,7 +201,6 @@
       }
     });
 
-    // Chuva de corações 💙🤍🖤
     function createHeart() {
       const heart = document.createElement("div");
       heart.classList.add("heart");
@@ -259,15 +208,10 @@
       heart.style.left = Math.random() * 100 + "vw";
       heart.style.animationDuration = 3 + Math.random() * 2 + "s"; 
       document.body.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 5000);
+      setTimeout(() => { heart.remove(); }, 5000);
     }
-
     setInterval(createHeart, 300);
 
-    // Contador ao vivo ⏳
     const inicio = new Date("2024-12-01T00:00:00");
     function atualizarContador() {
       const agora = new Date();
@@ -286,4 +230,5 @@
     setInterval(atualizarContador, 1000);
   </script>
 </body>
+</html>
 </html>
