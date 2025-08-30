@@ -192,16 +192,11 @@
         foto: "textinho.jpg",
         audio: "textinho.mp3"
       },
-      diasjuntos: {
-        texto: (function(){
-          const inicio = new Date("2024-12-01");
-          const hoje = new Date();
-          const diffDays = Math.floor((hoje - inicio) / (1000*60*60*24));
-          return `Nós estamos juntos há ${diffDays} dias! Cada dia com você é mágico 💜`;
-        })(),
-        foto: null,
-        audio: null
-      }
+     diasjuntos: {
+  texto: `Nós estamos juntos há <span id="contador"></span> 💜`,
+  foto: null,
+  audio: null
+}
     };
 
     function typeOutput(text, onComplete) {
@@ -267,6 +262,23 @@
     }
 
     setInterval(createHeart, 300);
+    // Contador ao vivo ⏳
+const inicio = new Date("2024-12-01T00:00:00");
+function atualizarContador() {
+  const agora = new Date();
+  const diff = agora - inicio;
+
+  const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutos = Math.floor((diff / (1000 * 60)) % 60);
+  const segundos = Math.floor((diff / 1000) % 60);
+
+  const contador = document.getElementById("contador");
+  if (contador) {
+    contador.innerText = `${dias} dias, ${horas}h ${minutos}m ${segundos}s`;
+  }
+}
+setInterval(atualizarContador, 1000);
   </script>
 </body>
 </html>
