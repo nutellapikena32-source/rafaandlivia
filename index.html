@@ -44,7 +44,7 @@ body {
 .output {
   margin: 12px 0;
   line-height: 1.5;
-  color: #ffffff; /* Letras brancas */
+  color: #ffffff;
 }
 
 input {
@@ -73,7 +73,6 @@ input {
   border-top: 1px solid #00aaff;
 }
 
-/* Fotos um pouco maiores e legíveis */
 .command-image {
   max-width: 400px;
   max-height: 300px;
@@ -109,6 +108,7 @@ input {
   position: relative;
   z-index: 15;
 }
+
 #menu-lateral h2 {
   text-align: center;
   margin-bottom: 10px;
@@ -116,6 +116,7 @@ input {
   color: #ff69b4;
   text-shadow: 0 0 10px #ff69b4;
 }
+
 #menu-lateral p {
   margin: 5px 0;
   line-height: 1.4;
@@ -131,9 +132,7 @@ input {
   animation: fall linear forwards;
   z-index: 1;
 }
-@keyframes fall {
-  to { transform: translateY(110vh); }
-}
+@keyframes fall { to { transform: translateY(110vh); } }
 
 /* Hearts dentro do menu */
 .menu-heart {
@@ -142,9 +141,7 @@ input {
   pointer-events: none;
   animation: fallMenu linear forwards;
 }
-@keyframes fallMenu {
-  to { transform: translateY(90vh); } /* Vai até o fim da tela */
-}
+@keyframes fallMenu { to { transform: translateY(90vh); } }
 
 /* Confetes e fogos de aniversario */
 .confetti {
@@ -158,11 +155,7 @@ input {
   animation: confettiFall linear forwards;
   z-index: 20;
 }
-
-@keyframes confettiFall {
-  0% { transform: translateY(0) rotate(0deg); }
-  100% { transform: translateY(100vh) rotate(720deg); }
-}
+@keyframes confettiFall { 0% { transform: translateY(0) rotate(0deg); } 100% { transform: translateY(100vh) rotate(720deg); } }
 
 .firework {
   position: fixed;
@@ -173,12 +166,7 @@ input {
   animation: fireworkAnim 0.8s ease-out forwards;
   z-index: 20;
 }
-
-@keyframes fireworkAnim {
-  0% { transform: translateY(0) scaleY(1); opacity: 1; }
-  50% { transform: translateY(-50px) scaleY(2); opacity: 1; }
-  100% { transform: translateY(-100px) scaleY(1); opacity: 0; }
-}
+@keyframes fireworkAnim { 0% { transform: translateY(0) scaleY(1); opacity: 1; } 50% { transform: translateY(-50px) scaleY(2); opacity: 1; } 100% { transform: translateY(-100px) scaleY(1); opacity: 0; } }
 </style>
 </head>
 <body>
@@ -193,7 +181,6 @@ input {
   </div>
 </div>
 
-<!-- Menu lateral -->
 <div id="menu-lateral">
   <h2>💖Menu de Comandos💖</h2>
   <p>nossosimbolo</p>
@@ -217,30 +204,41 @@ const terminal = document.getElementById("terminal");
 const input = document.getElementById("input");
 
 const comandos = {
-  /* ...seu objeto comandos aqui igual ao que você mandou... */
+  help: { texto: "Comandos disponíveis: nossosimbolo, chimarrao, yakisoba, deadpool, primeirobeijo, primeiravez, outback, cafe, funkos, musica, amor, textinho, diasjuntos, aniversario", foto: null, audio: null },
+  nossosimbolo: { texto: "💞 Nosso símbolo é o Kindred, pois de fato: nunca um sem o outro. Somos corpo e alma correndo lado a lado 💞", foto: "kindred.jpg", audio: "kindred.mp3" },
+  chimarrao: { texto: "🧉 Tomei meu primeiro chimarrão graças a você, amor! Cada gole tem o gostinho dos nossos momentos juntos 💚", foto: "chimarrao.jpg", audio: "chimarrao.mp3" },
+  yakisoba: { texto: "🍜 Aquele yakisoba que você fez foi tão gostoso quanto o seu carinho e seus beijos. Eu amei cada garfada. Ficou perfeito, pra mim vc ganhou 50 estrelas michelinnnn 💜", foto: "yakisoba.jpg", audio: "yakisoba.mp3" },
+  deadpool: { texto: "🎬 Assistimos Deadpool juntos e foi perfeito, porque qualquer filme fica 1000x melhor quando vemos juntos 😍", foto: "deadpool.jpeg", audio: "deadpool.mp3" },
+  primeirobeijo: { texto: "💋 Nosso primeiro beijo tímido no aeroporto de Campina ainda me faz sentir borboletas na barriga. Encaixou de primeira, e ali eu soube que tudo daria certo entre nós dois, meu amor. 🥰", foto: "primeirobeijo.jpg", audio: "beijo.mp3" },
+  primeiravez: { texto: "✨ Nossa primeira vez em 16/04/25 foi simplesmente mágica, amor. Um momento só nosso que guardo no coração, e cada toque seu me dá calafrios de amor sempre 💜", foto: "primeiravez.jpg", audio: "primeiravez.mp3" },
+  outback: { texto: "🥩 Nosso almoço no Outback foi marcante, não só pela comida (também por ela, claro KKKK), mas porque estávamos juntos, rindo, sendo nós colecionando mais um momento incrível 💕", foto: "outback.jpg", audio: "outback.mp3" },
+  cafe: { texto: "☕ Eu só tomei café de verdade porque você trouxe pra mim. Agora todo café gostoso tem gosto de você 🤎", foto: "cafe.jpg", audio: "cafe.mp3" },
+  funkos: { texto: "🧸 Você me deu meus primeiros Funkos Pop e minha primeira action figureee, e cada um carrega um pedacinho do nosso amor 💜", foto: "funkos.jpg", audio: null },
+  musica: { texto: "🎶 Nossa música é 'I Wanna Be Yours' do Arctic Monkeys. Porque eu sou sua, e quero ser sua em todos os sentidos ❤️", foto: "iwannabeyours.jpg", audio: "iwannabeyours.mp3" },
+  amor: { texto: "💖 Rafa, você me ajuda todos os dias a superar meus traumas. Obrigada por ser meu porto seguro. Com você eu sinto que nada pode me abalar, pois posso contar com seu carinho pra me acalmar. Eu te amo infinitamente. 💜", foto: "amor.jpg", audio: "textinho.mp3" },
+  textinho: { texto: "🥰 Meu amor, você não sabe a alegria que é pra mim poder te ter comigo. Vc foi a melhor coisa que me aconteceu, a melhor pessoa que já conheci, e quero poder colecionar cada vez mais momentos juntos e te proporcionar tudo que você merece. Eu te amo mais que tudo nesse mundo...", foto: "textinho.jpg", audio: "textinho.mp3" },
+  diasjuntos: { texto: "", foto: "diasjuntos.jpg", audio: "diasjuntos.mp3" },
+  aniversario: { texto: "🥳 Eu não poderia nunca deixar de lembrar que hoje (23/09) é o dia especial do amor da minha vida. Meu nenenzinho ta fazendo 31 aninhoooooos (sim, vc é um nenenzinho pra mim), e eu estou muito orgulhosa de vc amor...", foto: "aniversario.jpg", audio: "aniversario.mp3" }
 };
 
-// Função para digitar o texto no terminal
 function typeOutput(text, onComplete){
   const newLine = document.createElement("div");
   newLine.classList.add("output");
   terminal.insertBefore(newLine, document.getElementById("input-container"));
   let i=0;
-  function type(){
-    if(i<text.length){
-      newLine.innerHTML += text[i++];
-      terminal.scrollTop = terminal.scrollHeight;
-      setTimeout(type,20);
-    } else if(onComplete) onComplete(newLine);
+  function type(){ 
+    if(i<text.length){ 
+      newLine.innerHTML += text[i++]; 
+      terminal.scrollTop = terminal.scrollHeight; 
+      setTimeout(type,20); 
+    } else if(onComplete) onComplete(newLine); 
   }
   type();
 }
 
 let currentAudio = null;
 
-// Efeitos de aniversario
 function triggerAniversarioEffects(){
-  // Confetes
   for(let i=0;i<50;i++){
     const confetti = document.createElement("div");
     confetti.classList.add("confetti");
@@ -250,7 +248,6 @@ function triggerAniversarioEffects(){
     document.body.appendChild(confetti);
     setTimeout(()=>confetti.remove(),4000);
   }
-  // Fogos
   for(let i=0;i<10;i++){
     const firework = document.createElement("div");
     firework.classList.add("firework");
@@ -261,11 +258,11 @@ function triggerAniversarioEffects(){
   }
 }
 
-// Captura Enter
 input.addEventListener("keydown", function(event){
   if(event.key === "Enter"){
     const valor = input.value.trim().toLowerCase();
     const cmd = comandos[valor];
+
     if(cmd){
       typeOutput(`> ${input.value}\n`, function(newLine){
         if(cmd.foto){
@@ -280,9 +277,7 @@ input.addEventListener("keydown", function(event){
           currentAudio.play();
         }
 
-        if(valor==="aniversario"){
-          triggerAniversarioEffects();
-        }
+        if(valor==="aniversario"){ triggerAniversarioEffects(); }
 
         if(valor==="diasjuntos"){
           newLine.innerHTML += `Nós estamos juntos há <span id="contador"></span> 💜`;
@@ -291,8 +286,8 @@ input.addEventListener("keydown", function(event){
           let i=0;
           function typeTxt(){
             if(i<cmd.texto.length){
-              newLine.innerHTML+=cmd.texto[i++];
-              terminal.scrollTop=terminal.scrollHeight;
+              newLine.innerHTML += cmd.texto[i++];
+              terminal.scrollTop = terminal.scrollHeight;
               setTimeout(typeTxt,20);
             }
           }
@@ -306,7 +301,7 @@ input.addEventListener("keydown", function(event){
   }
 });
 
-// Chuva atrás do terminal
+// Hearts atrás do terminal
 function createTerminalHeart(){
   const heart=document.createElement("div");
   heart.classList.add("heart");
@@ -318,7 +313,7 @@ function createTerminalHeart(){
 }
 setInterval(createTerminalHeart,300);
 
-// Chuva dentro do menu (vai até o fim da tela)
+// Hearts dentro do menu
 function createMenuHeart(){
   const menu=document.getElementById("menu-lateral");
   const heart=document.createElement("div");
