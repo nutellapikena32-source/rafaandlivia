@@ -17,8 +17,9 @@
       overflow: hidden;
     }
 
+    /* Terminal central */
     #terminal {
-      width: 85%;
+      width: 65%;
       height: 85%;
       background-color: rgba(0, 0, 50, 0.9);
       border-radius: 20px;
@@ -29,6 +30,7 @@
       overflow-y: auto;
       position: relative;
       z-index: 10;
+      margin-right: 20px;
     }
 
     .title {
@@ -91,6 +93,7 @@
       border-radius: 5px;
     }
 
+    /* Corações caindo */
     .heart {
       position: fixed;
       top: -2em;
@@ -103,17 +106,70 @@
     @keyframes fall {
       to { transform: translateY(110vh); }
     }
+
+    /* Menu lateral fixo */
+    #menu-lateral {
+      position: fixed;
+      right: 0;
+      top: 0;
+      width: 250px;
+      height: 100vh;
+      background-color: rgba(0,0,50,0.95);
+      border-left: 3px solid #ffffff;
+      box-shadow: -5px 0 20px #ffffff;
+      padding: 20px;
+      color: #ffffff;
+      font-family: "Courier New", monospace;
+      overflow: hidden;
+      z-index: 20;
+    }
+
+    #menu-lateral h3 {
+      text-align: center;
+      color: #ffffff;
+      text-shadow: 0 0 5px #ffffff;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    #menu-lateral ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    #menu-lateral li {
+      margin: 8px 0;
+    }
   </style>
 </head>
 <body>
   <div id="terminal">
-    <div class="title">💙 Console do Amor de rafa e livia 💙</div>
+    <div class="title">💙 Console do Amor de Rafa e Lívia 💙</div>
     <div class="output">Bem-vindo ao terminal fofo, Rafa! Esse site é só seu, pra você acessar quando quiser e lembrar o quanto te amo. Alguns dos nossos melhores momentos estão aqui, pra sempre! 😍</div>
     <div class="output">Digite <span style="color:#00aaff;">help</span> para ver os comandos.</div>
     <div id="input-container">
       <span class="prompt"> </span>
       <input id="input" autofocus>
     </div>
+  </div>
+
+  <div id="menu-lateral">
+    <h3>💖 Menu de Comandos 💖</h3>
+    <ul>
+      <li>nossosimbolo</li>
+      <li>chimarrao</li>
+      <li>yakisoba</li>
+      <li>deadpool</li>
+      <li>primeirobeijo</li>
+      <li>primeiravez</li>
+      <li>outback</li>
+      <li>cafe</li>
+      <li>funkos</li>
+      <li>musica</li>
+      <li>amor</li>
+      <li>textinho</li>
+      <li>diasjuntos</li>
+    </ul>
   </div>
 
   <script>
@@ -130,11 +186,11 @@
       primeiravez: { texto: `✨ Nossa primeira vez em 16/04/25 foi simplesmente mágica, Rafa. Um momento só nosso que guardo no coração 💜`, foto: "primeiravez.jpg", audio: "primeiravez.mp3" },
       outback: { texto: `🥩 Nosso almoço no Outback foi marcante, não pela comida, mas porque estávamos juntos, rindo e sendo nós 💕`, foto: "outback.jpg", audio: "outback.mp3" },
       cafe: { texto: `☕ Eu só tomei café de verdade porque você trouxe pra mim. Agora todo café tem gosto de você 💚`, foto: "cafe.jpg", audio: "cafe.mp3" },
-      funkos: { texto: `🧸 Você me deu meus primeiros Funkos Pop, e cada um carrega um pedacinho do nosso amor 💜`, foto: "funkos.jpg", audio: null },
+      funkos: { texto: `🧸 Você me deu seus primeiros Funkos Pop, e cada um carrega um pedacinho do nosso amor 💜`, foto: "funkos.jpg", audio: null },
       musica: { texto: `🎶 Nossa música é 'I Wanna Be Yours' do Arctic Monkeys. Porque eu sou sua, e quero ser sua em todos os sentidos ❤️`, foto: "iwannabeyours.jpg", audio: "iwannabeyours.mp3" },
       amor: { texto: `💖 Rafa, você me ajuda todos os dias a superar meus traumas. Obrigada por ser meu porto seguro. Eu te amo infinitamente 💜`, foto: "amor.jpg", audio: "textinho.mp3" },
       textinho: { texto: `🥰 Meu amor, você não sabe a alegria que é pra mim poder te ter comigo. Vc foi a melhor coisa que me aconteceu, a melhor pessoa que já conheci, e quero poder colecionar cada vez mais momentos juntos e te proporcionar tudo que você merece. Eu te amo mais que tudo nesse mundo, e ter você comigo significa que estarei bem e que nada vai poder me abalar. Te quero pra sempre, meu bbzinho! 💞💜💖`, foto: "textinho.jpg", audio: "textinho.mp3" },
-      diasjuntos: { texto: ``, foto: "diasjuntos.jpg", audio: "diasjuntos.mp3" }
+      diasjuntos: { texto: `Nós estamos juntos há `, foto: "diasjuntos.jpg", audio: "diasjuntos.mp3" }
     };
 
     function typeOutput(text, onComplete) {
@@ -178,7 +234,11 @@
             }
 
             if (valor === "diasjuntos") {
-              newLine.innerHTML += `Nós estamos juntos há <span id="contador"></span> 💜`;
+              const span = document.createElement("span");
+              span.id = "contador";
+              newLine.appendChild(document.createTextNode(cmd.texto));
+              newLine.appendChild(span);
+              newLine.appendChild(document.createTextNode(" 💜"));
               atualizarContador();
             } else {
               let i = 0;
@@ -230,5 +290,4 @@
     setInterval(atualizarContador, 1000);
   </script>
 </body>
-</html>
 </html>
