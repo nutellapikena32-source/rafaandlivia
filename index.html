@@ -12,9 +12,10 @@ body {
   background: linear-gradient(135deg, #000000, #001f4d);
   color: #ffffff;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
   overflow: hidden;
+  gap: 2%;
 }
 
 /* Terminal central */
@@ -30,7 +31,6 @@ body {
   overflow-y: auto;
   position: relative;
   z-index: 10;
-  margin-right: 2%;
 }
 
 .title {
@@ -103,12 +103,10 @@ input {
   border: 2px solid #fff;
   border-radius: 20px;
   padding: 15px;
-  overflow-y: hidden;
+  overflow: hidden;
   box-shadow: 0 0 15px #fff, 0 0 30px #ff69b4 inset;
   color: #fff;
-  position: fixed;
-  right: 20px;
-  top: 5vh;
+  position: relative;
   z-index: 15;
 }
 #menu-lateral h2 {
@@ -145,7 +143,7 @@ input {
   animation: fallMenu linear forwards;
 }
 @keyframes fallMenu {
-  to { transform: translateY(100%); }
+  to { transform: translateY(90vh); } /* Vai até o fim da tela */
 }
 </style>
 </head>
@@ -161,7 +159,7 @@ input {
   </div>
 </div>
 
-<!-- Menu lateral fixo -->
+<!-- Menu lateral -->
 <div id="menu-lateral">
   <h2>💖Menu de Comandos💖</h2>
   <p>nossosimbolo</p>
@@ -269,7 +267,7 @@ function createTerminalHeart(){
 }
 setInterval(createTerminalHeart,300);
 
-// Chuva dentro do menu
+// Chuva dentro do menu (vai até o fim da tela)
 function createMenuHeart(){
   const menu=document.getElementById("menu-lateral");
   const heart=document.createElement("div");
