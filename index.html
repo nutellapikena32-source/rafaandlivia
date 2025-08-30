@@ -173,7 +173,7 @@
         audio: "cafe.mp3"
       },
       funkos: {
-        texto: `🧸 Você me deu meus primeiros Funkos Pop, e cada um carrega um pedacinho do nosso amor 💜`,
+        texto: `🧸 Você me deu seus primeiros Funkos Pop, e cada um carrega um pedacinho do nosso amor 💜`,
         foto: "funkos.jpg",
         audio: null
       },
@@ -192,11 +192,11 @@
         foto: "textinho.jpg",
         audio: "textinho.mp3"
       },
-     diasjuntos: {
-  texto: `Nós estamos juntos há <span id="contador"></span> 💜`,
-  foto: null,
-  audio: null
-}
+      diasjuntos: {
+        texto: `Nós estamos juntos há <span id="contador"></span> 💜`,
+        foto: null,
+        audio: null
+      }
     };
 
     function typeOutput(text, onComplete) {
@@ -238,6 +238,10 @@
               currentAudio = new Audio(cmd.audio);
               currentAudio.play();
             }
+            // CORREÇÃO: atualiza o contador ao vivo
+            if (valor === "diasjuntos") {
+              atualizarContador(); // primeira atualização imediata
+            }
           });
         } else {
           typeOutput(`> ${input.value}\nComando não encontrado 💔. Digite help para ver a lista.`);
@@ -262,23 +266,24 @@
     }
 
     setInterval(createHeart, 300);
+
     // Contador ao vivo ⏳
-const inicio = new Date("2024-12-01T00:00:00");
-function atualizarContador() {
-  const agora = new Date();
-  const diff = agora - inicio;
+    const inicio = new Date("2024-12-01T00:00:00");
+    function atualizarContador() {
+      const agora = new Date();
+      const diff = agora - inicio;
 
-  const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const minutos = Math.floor((diff / (1000 * 60)) % 60);
-  const segundos = Math.floor((diff / 1000) % 60);
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutos = Math.floor((diff / (1000 * 60)) % 60);
+      const segundos = Math.floor((diff / 1000) % 60);
 
-  const contador = document.getElementById("contador");
-  if (contador) {
-    contador.innerText = `${dias} dias, ${horas}h ${minutos}m ${segundos}s`;
-  }
-}
-setInterval(atualizarContador, 1000);
+      const contador = document.getElementById("contador");
+      if (contador) {
+        contador.innerText = `${dias} dias, ${horas}h ${minutos}m ${segundos}s`;
+      }
+    }
+    setInterval(atualizarContador, 1000);
   </script>
 </body>
 </html>
