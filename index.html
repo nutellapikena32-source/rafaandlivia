@@ -1,226 +1,294 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Console do Amor 💙🤍</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      font-family: "Courier New", monospace;
-      background: linear-gradient(135deg, #000000, #001f4d);
-      color: #ffffff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-    }
+<meta charset="UTF-8">
+<title>Console do Amor 💙🤍</title>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: "Courier New", monospace;
+  background: linear-gradient(135deg, #000000, #001f4d);
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: hidden;
+}
 
-    /* Terminal central */
-    #terminal {
-      width: 65%;
-      height: 85%;
-      background-color: rgba(0, 0, 50, 0.9);
-      border-radius: 20px;
-      padding: 20px 30px 80px 30px;
-      box-shadow: 0 0 30px #ffffff, 0 0 60px #00aaff inset;
-      display: flex;
-      flex-direction: column;
-      overflow-y: auto;
-      position: relative;
-      z-index: 10;
-    }
+/* Terminal central */
+#terminal {
+  width: 65%;
+  height: 90vh;
+  background-color: rgba(0,0,50,0.9);
+  border-radius: 20px;
+  padding: 20px 30px 80px 30px;
+  box-shadow: 0 0 30px #ffffff, 0 0 60px #00aaff inset;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  position: relative;
+  z-index: 10;
+  margin-right: 2%;
+}
 
-    .title {
-      font-size: 2em;
-      text-align: center;
-      color: #00aaff;
-      margin-bottom: 20px;
-      text-shadow: 0 0 10px #00aaff;
-    }
+.title {
+  font-size: 2em;
+  text-align: center;
+  color: #00aaff;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #00aaff;
+}
 
-    .output {
-      margin: 12px 0;
-      line-height: 1.5;
-    }
+.output {
+  margin: 12px 0;
+  line-height: 1.5;
+}
 
-    input {
-      background: none;
-      border: none;
-      color: #00aaff;
-      font-family: inherit;
-      font-size: 18px;
-      width: 100%;
-      outline: none;
-    }
+input {
+  background: none;
+  border: none;
+  color: #00aaff;
+  font-family: inherit;
+  font-size: 18px;
+  width: 100%;
+  outline: none;
+}
 
-    .prompt {
-      color: #ffffff;
-      font-weight: bold;
-    }
+.prompt {
+  color: #ffffff;
+  font-weight: bold;
+}
 
-    #input-container {
-      position: sticky;
-      bottom: 0;
-      display: flex;
-      align-items: center;
-      background-color: rgba(0, 0, 50, 0.95);
-      padding-top: 10px;
-      padding-bottom: 10px;
-      border-top: 1px solid #00aaff;
-    }
+#input-container {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  background-color: rgba(0,0,50,0.95);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 1px solid #00aaff;
+}
 
-    .command-image {
-      max-width: 100%;
-      max-height: 300px;
-      border-radius: 15px;
-      margin-top: 10px;
-      display: block;
-      box-shadow: 0 0 15px #00aaff;
-    }
+.command-image {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 15px;
+  margin-top: 10px;
+  display: block;
+  box-shadow: 0 0 15px #00aaff;
+}
 
-    #terminal::-webkit-scrollbar {
-      width: 10px;
-    }
-    #terminal::-webkit-scrollbar-thumb {
-      background: #00aaff;
-      border-radius: 5px;
-    }
-    #terminal::-webkit-scrollbar-track {
-      background: rgba(0,0,0,0.2);
-      border-radius: 5px;
-    }
+#terminal::-webkit-scrollbar {
+  width: 10px;
+}
+#terminal::-webkit-scrollbar-thumb {
+  background: #00aaff;
+  border-radius: 5px;
+}
+#terminal::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
 
-    /* Menu lateral */
-    #menu-lateral {
-      position: fixed;
-      right: 20px;
-      top: 20px;
-      width: 25%;
-      height: 80%;
-      background-color: rgba(255, 255, 255, 0.08);
-      border: 2px solid #fff;
-      border-radius: 20px;
-      padding: 15px;
-      overflow: hidden;
-      box-shadow: 0 0 15px #fff, 0 0 30px #ff69b4 inset;
-      z-index: 15;
-      color: #fff;
-    }
-    #menu-lateral h2 {
-      text-align: center;
-      margin-bottom: 10px;
-      font-size: 1.3em;
-      color: #ff69b4;
-      text-shadow: 0 0 10px #ff69b4;
-    }
-    #menu-lateral p {
-      margin: 5px 0;
-      line-height: 1.4;
-      font-size: 1em;
-    }
+/* Menu lateral */
+#menu-lateral {
+  width: 25%;
+  height: 90vh;
+  background-color: rgba(255,255,255,0.08);
+  border: 2px solid #fff;
+  border-radius: 20px;
+  padding: 15px;
+  overflow-y: hidden;
+  box-shadow: 0 0 15px #fff, 0 0 30px #ff69b4 inset;
+  color: #fff;
+  position: fixed;
+  right: 20px;
+  top: 5vh;
+  z-index: 15;
+}
+#menu-lateral h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 1.3em;
+  color: #ff69b4;
+  text-shadow: 0 0 10px #ff69b4;
+}
+#menu-lateral p {
+  margin: 5px 0;
+  line-height: 1.4;
+  font-size: 1em;
+}
 
-    /* Hearts */
-    .heart {
-      position: fixed;
-      top: -2em;
-      font-size: 1.5em;
-      pointer-events: none;
-      animation: fall linear forwards;
-      z-index: 1;
-    }
-    @keyframes fall {
-      to { transform: translateY(110vh); }
-    }
+/* Hearts atrás do terminal */
+.heart {
+  position: fixed;
+  top: -2em;
+  font-size: 1.5em;
+  pointer-events: none;
+  animation: fall linear forwards;
+  z-index: 1;
+}
+@keyframes fall {
+  to { transform: translateY(110vh); }
+}
 
-    /* Hearts menu */
-    #menu-lateral .menu-heart {
-      position: absolute;
-      font-size: 1em;
-      pointer-events: none;
-      animation: fallMenu linear forwards;
-    }
-    @keyframes fallMenu {
-      to { transform: translateY(100%); }
-    }
-  </style>
+/* Hearts dentro do menu */
+.menu-heart {
+  position: absolute;
+  font-size: 1em;
+  pointer-events: none;
+  animation: fallMenu linear forwards;
+}
+@keyframes fallMenu {
+  to { transform: translateY(100%); }
+}
+</style>
 </head>
 <body>
-  <div id="terminal">
-    <div class="title">💙 Console do Amor de Rafa e Lívia 💙</div>
-    <div class="output">Bem-vindo ao terminal fofo, Rafa! Esse site é só seu, pra você acessar quando quiser e lembrar o quanto te amo. Alguns dos nossos melhores momentos estão aqui, pra sempre! 😍</div>
-    <div class="output">Digite <span style="color:#00aaff;">help</span> para ver os comandos.</div>
-    <div id="input-container">
-      <span class="prompt"> </span>
-      <input id="input" autofocus>
-    </div>
+
+<div id="terminal">
+  <div class="title">💙 Console do Amor de Rafa e Lívia 💙</div>
+  <div class="output">Bem-vindo ao terminal fofo, Rafa! Esse site é só seu, pra você acessar quando quiser e lembrar o quanto te amo. Alguns dos nossos melhores momentos estão aqui, pra sempre! 😍</div>
+  <div class="output">Digite <span style="color:#00aaff;">help</span> para ver os comandos.</div>
+  <div id="input-container">
+    <span class="prompt"> </span>
+    <input id="input" autofocus>
   </div>
+</div>
 
-  <!-- Menu lateral fixo -->
-  <div id="menu-lateral">
-    <h2>💖Menu de Comandos💖</h2>
-    <p>nossosimbolo</p>
-    <p>chimarrao</p>
-    <p>yakisoba</p>
-    <p>deadpool</p>
-    <p>primeirobeijo</p>
-    <p>primeiravez</p>
-    <p>outback</p>
-    <p>cafe</p>
-    <p>funkos</p>
-    <p>musica</p>
-    <p>amor</p>
-    <p>textinho</p>
-    <p>diasjuntos</p>
-  </div>
+<!-- Menu lateral fixo -->
+<div id="menu-lateral">
+  <h2>💖Menu de Comandos💖</h2>
+  <p>nossosimbolo</p>
+  <p>chimarrao</p>
+  <p>yakisoba</p>
+  <p>deadpool</p>
+  <p>primeirobeijo</p>
+  <p>primeiravez</p>
+  <p>outback</p>
+  <p>cafe</p>
+  <p>funkos</p>
+  <p>musica</p>
+  <p>amor</p>
+  <p>textinho</p>
+  <p>diasjuntos</p>
+</div>
 
-  <script>
-    const terminal = document.getElementById("terminal");
-    const input = document.getElementById("input");
+<script>
+const terminal = document.getElementById("terminal");
+const input = document.getElementById("input");
 
-    const comandos = {
-      help: { texto: "Comandos disponíveis: nossosimbolo, chimarrao, yakisoba, deadpool, primeirobeijo, primeiravez, outback, cafe, funkos, musica, amor, textinho, diasjuntos", foto: null, audio: null },
-      nossosimbolo: { texto: `💞 Nosso símbolo é o Kindred, pois de fato: nunca um sem o outro. Somos alma e corpo correndo lado a lado 💞`, foto: "kindred.jpg", audio: "kindred.mp3" },
-      chimarrao: { texto: `🧉 Tomei meu primeiro chimarrão graças a você, Rafa! Cada gole tem o gostinho dos nossos momentos juntos 💚`, foto: "chimarrao.jpg", audio: "chimarrao.mp3" },
-      yakisoba: { texto: `🍜 Aquele yakisoba que você fez foi tão gostoso quanto o seu carinho. Eu amei cada garfada 💜`, foto: "yakisoba.jpg", audio: "yakisoba.mp3" },
-      deadpool: { texto: `🎬 Assistimos Deadpool juntos e foi perfeito, porque qualquer filme fica 1000x melhor ao seu lado 😍`, foto: "deadpool.jpeg", audio: "deadpool.mp3" },
-      primeirobeijo: { texto: `💋 Nosso primeiro beijo tímido no aeroporto de Campina Grande ainda me faz sentir borboletas na barriga 🥰`, foto: "primeirobeijo.jpg", audio: "beijo.mp3" },
-      primeiravez: { texto: `✨ Nossa primeira vez em 16/04/25 foi simplesmente mágica, Rafa. Um momento só nosso que guardo no coração 💜`, foto: "primeiravez.jpg", audio: "primeiravez.mp3" },
-      outback: { texto: `🥩 Nosso almoço no Outback foi marcante, não pela comida, mas porque estávamos juntos, rindo e sendo nós 💕`, foto: "outback.jpg", audio: "outback.mp3" },
-      cafe: { texto: `☕ Eu só tomei café de verdade porque você trouxe pra mim. Agora todo café tem gosto de você 💚`, foto: "cafe.jpg", audio: "cafe.mp3" },
-      funkos: { texto: `🧸 Você me deu meus primeiros Funkos Pop, e cada um carrega um pedacinho do nosso amor 💜`, foto: "funkos.jpg", audio: null },
-      musica: { texto: `🎶 Nossa música é 'I Wanna Be Yours' do Arctic Monkeys. Porque eu sou sua, e quero ser sua em todos os sentidos ❤️`, foto: "iwannabeyours.jpg", audio: "iwannabeyours.mp3" },
-      amor: { texto: `💖 Rafa, você me ajuda todos os dias a superar meus traumas. Obrigada por ser meu porto seguro. Eu te amo infinitamente 💜`, foto: "amor.jpg", audio: "textinho.mp3" },
-      textinho: { texto: `🥰 Meu amor, você não sabe a alegria que é pra mim poder te ter comigo. Vc foi a melhor coisa que me aconteceu, a melhor pessoa que já conheci, e quero poder colecionar cada vez mais momentos juntos e te proporcionar tudo que você merece. Eu te amo mais que tudo nesse mundo, e ter você comigo significa que estarei bem e que nada vai poder me abalar. Te quero pra sempre, meu bbzinho! 💞💜💖`, foto: "textinho.jpg", audio: "textinho.mp3" },
-      diasjuntos: { texto: "", foto: "diasjuntos.jpg", audio: "diasjuntos.mp3" }
-    };
+const comandos = {
+  help: { texto: "Comandos disponíveis: nossosimbolo, chimarrao, yakisoba, deadpool, primeirobeijo, primeiravez, outback, cafe, funkos, musica, amor, textinho, diasjuntos", foto: null, audio: null },
+  nossosimbolo: { texto: `💞 Nosso símbolo é o Kindred, pois de fato: nunca um sem o outro. Somos alma e corpo correndo lado a lado 💞`, foto: "kindred.jpg", audio: "kindred.mp3" },
+  chimarrao: { texto: `🧉 Tomei meu primeiro chimarrão graças a você, Rafa! Cada gole tem o gostinho dos nossos momentos juntos 💚`, foto: "chimarrao.jpg", audio: "chimarrao.mp3" },
+  yakisoba: { texto: `🍜 Aquele yakisoba que você fez foi tão gostoso quanto o seu carinho. Eu amei cada garfada 💜`, foto: "yakisoba.jpg", audio: "yakisoba.mp3" },
+  deadpool: { texto: `🎬 Assistimos Deadpool juntos e foi perfeito, porque qualquer filme fica 1000x melhor ao seu lado 😍`, foto: "deadpool.jpeg", audio: "deadpool.mp3" },
+  primeirobeijo: { texto: `💋 Nosso primeiro beijo tímido no aeroporto de Campina Grande ainda me faz sentir borboletas na barriga 🥰`, foto: "primeirobeijo.jpg", audio: "beijo.mp3" },
+  primeiravez: { texto: `✨ Nossa primeira vez em 16/04/25 foi simplesmente mágica, Rafa. Um momento só nosso que guardo no coração 💜`, foto: "primeiravez.jpg", audio: "primeiravez.mp3" },
+  outback: { texto: `🥩 Nosso almoço no Outback foi marcante, não pela comida, mas porque estávamos juntos, rindo e sendo nós 💕`, foto: "outback.jpg", audio: "outback.mp3" },
+  cafe: { texto: `☕ Eu só tomei café de verdade porque você trouxe pra mim. Agora todo café tem gosto de você 💚`, foto: "cafe.jpg", audio: "cafe.mp3" },
+  funkos: { texto: `🧸 Você me deu meus primeiros Funkos Pop, e cada um carrega um pedacinho do nosso amor 💜`, foto: "funkos.jpg", audio: null },
+  musica: { texto: `🎶 Nossa música é 'I Wanna Be Yours' do Arctic Monkeys. Porque eu sou sua, e quero ser sua em todos os sentidos ❤️`, foto: "iwannabeyours.jpg", audio: "iwannabeyours.mp3" },
+  amor: { texto: `💖 Rafa, você me ajuda todos os dias a superar meus traumas. Obrigada por ser meu porto seguro. Eu te amo infinitamente 💜`, foto: "amor.jpg", audio: "textinho.mp3" },
+  textinho: { texto: `🥰 Meu amor, você não sabe a alegria que é pra mim poder te ter comigo. Vc foi a melhor coisa que me aconteceu, a melhor pessoa que já conheci, e quero poder colecionar cada vez mais momentos juntos e te proporcionar tudo que você merece. Eu te amo mais que tudo nesse mundo, e ter você comigo significa que estarei bem e que nada vai poder me abalar. Te quero pra sempre, meu bbzinho! 💞💜💖`, foto: "textinho.jpg", audio: "textinho.mp3" },
+  diasjuntos: { texto: "", foto: "diasjuntos.jpg", audio: "diasjuntos.mp3" }
+};
 
-    function typeOutput(text, onComplete) {
-      const newLine = document.createElement("div");
-      newLine.classList.add("output");
-      terminal.insertBefore(newLine, document.getElementById("input-container"));
+function typeOutput(text, onComplete){
+  const newLine = document.createElement("div");
+  newLine.classList.add("output");
+  terminal.insertBefore(newLine, document.getElementById("input-container"));
+  let i=0;
+  function type(){
+    if(i<text.length){
+      newLine.innerHTML += text[i++];
+      terminal.scrollTop = terminal.scrollHeight;
+      setTimeout(type,20);
+    } else if(onComplete) onComplete(newLine);
+  }
+  type();
+}
 
-      let i = 0;
-      function type() {
-        if (i < text.length) {
-          newLine.innerHTML += text[i];
-          i++;
-          terminal.scrollTop = terminal.scrollHeight;
-          setTimeout(type, 20);
-        } else {
-          if (typeof onComplete === "function") onComplete(newLine);
+let currentAudio = null;
+
+input.addEventListener("keydown", function(event){
+  if(event.key === "Enter"){
+    const valor = input.value.trim().toLowerCase();
+    const cmd = comandos[valor];
+    if(cmd){
+      typeOutput(`> ${input.value}\n`, function(newLine){
+        if(cmd.foto){
+          const img = document.createElement("img");
+          img.src = cmd.foto;
+          img.className = "command-image";
+          newLine.appendChild(img);
         }
-      }
-      type();
+        if(cmd.audio){
+          if(currentAudio){ currentAudio.pause(); currentAudio.currentTime=0; }
+          currentAudio = new Audio(cmd.audio);
+          currentAudio.play();
+        }
+
+        if(valor==="diasjuntos"){
+          newLine.innerHTML += `Nós estamos juntos há <span id="contador"></span> 💜`;
+          atualizarContador();
+        } else {
+          let i=0;
+          function typeTxt(){
+            if(i<cmd.texto.length){
+              newLine.innerHTML+=cmd.texto[i++];
+              terminal.scrollTop=terminal.scrollHeight;
+              setTimeout(typeTxt,20);
+            }
+          }
+          typeTxt();
+        }
+      });
+    } else {
+      typeOutput(`> ${input.value}\nComando não encontrado 💔. Digite help para ver a lista.`);
     }
+    input.value="";
+  }
+});
 
-    let currentAudio = null;
+// Chuva atrás do terminal
+function createTerminalHeart(){
+  const heart=document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerText=["💙","🤍","🖤"][Math.floor(Math.random()*3)];
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.animationDuration=3+Math.random()*2+"s";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),5000);
+}
+setInterval(createTerminalHeart,300);
 
-    input.addEventListener("keydown", function(event) {
-      if (event.key === "Enter") {
-        const valor = input.value.trim().toLowerCase();
-        const cmd = comandos[valor];
+// Chuva dentro do menu
+function createMenuHeart(){
+  const menu=document.getElementById("menu-lateral");
+  const heart=document.createElement("div");
+  heart.classList.add("menu-heart");
+  heart.innerText=["💖","❤️","💜"][Math.floor(Math.random()*3)];
+  heart.style.left=Math.random()*(menu.clientWidth-20)+"px";
+  heart.style.top="-1em";
+  heart.style.animationDuration=2+Math.random()*2+"s";
+  menu.appendChild(heart);
+  setTimeout(()=>heart.remove(),4000);
+}
+setInterval(createMenuHeart,400);
 
-        if (cmd) {
-          typeOu
+// Contador ao vivo
+const inicio=new Date("2024-12-01T00:00:00");
+function atualizarContador(){
+  const agora=new Date();
+  const diff=agora-inicio;
+  const dias=Math.floor(diff/(1000*60*60*24));
+  const horas=Math.floor((diff/(1000*60*60))%24);
+  const minutos=Math.floor((diff/(1000*60))%60);
+  const segundos=Math.floor((diff/1000)%60);
+  const contador=document.getElementById("contador");
+  if(contador) contador.innerText=`${dias}
