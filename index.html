@@ -44,7 +44,7 @@ body {
 .output {
   margin: 12px 0;
   line-height: 1.5;
-  color: #ffffff;
+  color: #ffffff; /* Letras brancas */
 }
 
 input {
@@ -73,6 +73,7 @@ input {
   border-top: 1px solid #00aaff;
 }
 
+/* Fotos um pouco maiores e legíveis */
 .command-image {
   max-width: 400px;
   max-height: 300px;
@@ -108,7 +109,6 @@ input {
   position: relative;
   z-index: 15;
 }
-
 #menu-lateral h2 {
   text-align: center;
   margin-bottom: 10px;
@@ -116,7 +116,6 @@ input {
   color: #ff69b4;
   text-shadow: 0 0 10px #ff69b4;
 }
-
 #menu-lateral p {
   margin: 5px 0;
   line-height: 1.4;
@@ -132,7 +131,9 @@ input {
   animation: fall linear forwards;
   z-index: 1;
 }
-@keyframes fall { to { transform: translateY(110vh); } }
+@keyframes fall {
+  to { transform: translateY(110vh); }
+}
 
 /* Hearts dentro do menu */
 .menu-heart {
@@ -141,7 +142,9 @@ input {
   pointer-events: none;
   animation: fallMenu linear forwards;
 }
-@keyframes fallMenu { to { transform: translateY(90vh); } }
+@keyframes fallMenu {
+  to { transform: translateY(90vh); } /* Vai até o fim da tela */
+}
 
 /* Confetes e fogos de aniversario */
 .confetti {
@@ -155,7 +158,11 @@ input {
   animation: confettiFall linear forwards;
   z-index: 20;
 }
-@keyframes confettiFall { 0% { transform: translateY(0) rotate(0deg); } 100% { transform: translateY(100vh) rotate(720deg); } }
+
+@keyframes confettiFall {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(720deg); }
+}
 
 .firework {
   position: fixed;
@@ -166,7 +173,12 @@ input {
   animation: fireworkAnim 0.8s ease-out forwards;
   z-index: 20;
 }
-@keyframes fireworkAnim { 0% { transform: translateY(0) scaleY(1); opacity: 1; } 50% { transform: translateY(-50px) scaleY(2); opacity: 1; } 100% { transform: translateY(-100px) scaleY(1); opacity: 0; } }
+
+@keyframes fireworkAnim {
+  0% { transform: translateY(0) scaleY(1); opacity: 1; }
+  50% { transform: translateY(-50px) scaleY(2); opacity: 1; }
+  100% { transform: translateY(-100px) scaleY(1); opacity: 0; }
+}
 </style>
 </head>
 <body>
@@ -181,6 +193,7 @@ input {
   </div>
 </div>
 
+<!-- Menu lateral -->
 <div id="menu-lateral">
   <h2>💖Menu de Comandos💖</h2>
   <p>nossosimbolo</p>
@@ -204,7 +217,11 @@ const terminal = document.getElementById("terminal");
 const input = document.getElementById("input");
 
 const comandos = {
-  help: { texto: "Comandos disponíveis: nossosimbolo, chimarrao, yakisoba, deadpool, primeirobeijo, primeiravez, outback, cafe, funkos, musica, amor, textinho, diasjuntos, aniversario", foto: null, audio: null },
+  help: {
+    texto: "Comandos disponíveis: nossosimbolo, chimarrao, yakisoba, deadpool, primeirobeijo, primeiravez, outback, cafe, funkos, musica, amor, textinho, diasjuntos, aniversario",
+    foto: null,
+    audio: null
+  },
   nossosimbolo: { texto: "💞 Nosso símbolo é o Kindred, pois de fato: nunca um sem o outro. Somos corpo e alma correndo lado a lado 💞", foto: "kindred.jpg", audio: "kindred.mp3" },
   chimarrao: { texto: "🧉 Tomei meu primeiro chimarrão graças a você, amor! Cada gole tem o gostinho dos nossos momentos juntos 💚", foto: "chimarrao.jpg", audio: "chimarrao.mp3" },
   yakisoba: { texto: "🍜 Aquele yakisoba que você fez foi tão gostoso quanto o seu carinho e seus beijos. Eu amei cada garfada. Ficou perfeito, pra mim vc ganhou 50 estrelas michelinnnn 💜", foto: "yakisoba.jpg", audio: "yakisoba.mp3" },
@@ -215,10 +232,10 @@ const comandos = {
   cafe: { texto: "☕ Eu só tomei café de verdade porque você trouxe pra mim. Agora todo café gostoso tem gosto de você 🤎", foto: "cafe.jpg", audio: "cafe.mp3" },
   funkos: { texto: "🧸 Você me deu meus primeiros Funkos Pop e minha primeira action figureee, e cada um carrega um pedacinho do nosso amor 💜", foto: "funkos.jpg", audio: null },
   musica: { texto: "🎶 Nossa música é 'I Wanna Be Yours' do Arctic Monkeys. Porque eu sou sua, e quero ser sua em todos os sentidos ❤️", foto: "iwannabeyours.jpg", audio: "iwannabeyours.mp3" },
-  amor: { texto: "💖 Rafa, você me ajuda todos os dias a superar meus traumas. Obrigada por ser meu porto seguro. Com você eu sinto que nada pode me abalar, pois posso contar com seu carinho pra me acalmar. Eu te amo infinitamente. 💜", foto: "amor.jpg", audio: "textinho.mp3" },
-  textinho: { texto: "🥰 Meu amor, você não sabe a alegria que é pra mim poder te ter comigo. Vc foi a melhor coisa que me aconteceu, a melhor pessoa que já conheci, e quero poder colecionar cada vez mais momentos juntos e te proporcionar tudo que você merece. Eu te amo mais que tudo nesse mundo...", foto: "textinho.jpg", audio: "textinho.mp3" },
+  amor: { texto: "💖 Rafa, você me ajuda todos os dias a superar meus traumas. Obrigada por ser meu porto seguro. Com você eu sinto que nada pode me abalar, pos posso contar com seu carinho pra me acalmar. Eu te amo infinitamente. 💜", foto: "amor.jpg", audio: "textinho.mp3" },
+  textinho: { texto: "🥰 Meu amor, você não sabe a alegria que é pra mim poder te ter comigo. Vc foi a melhor coisa que me aconteceu, a melhor pessoa que já conheci, e quero poder colecionar cada vez mais momentos juntos e te proporcionar tudo que você merece. Eu te amo mais que tudo nesse mundo, e ter você comigo significa que estarei bem e que nada vai poder me abalar. Meus parabéns por ser um homem tão incrível. De brinde pra esse comando, fique com minha foto toda sujinha de subway KKKKK. Te quero pra sempre, meu bbzinho! 💞💜💖", foto: "textinho.jpg", audio: "textinho.mp3" },
   diasjuntos: { texto: "", foto: "diasjuntos.jpg", audio: "diasjuntos.mp3" },
-  aniversario: { texto: "🥳 Eu não poderia nunca deixar de lembrar que hoje (23/09) é o dia especial do amor da minha vida. Meu nenenzinho ta fazendo 31 aninhoooooos (sim, vc é um nenenzinho pra mim), e eu estou muito orgulhosa de vc, amor. Por tudo que vc enfrenta todos os dias, pelo homem incrível que você é e sempre foi, e por fazer tanto todos os dias pra que nosso amor se perpetue cada vez mais. Meu neném, você é foda, e muito obrigada por escolher passar seu dia do bolo comigo. Quero que ele seja muito especial, afinal, tive a honra de poder estar contigo hoje. Feliz dia, meu anjinho! Sua sugar baby nordestina te ama e vai te amar pra sempre.", foto: "aniversario.jpg", audio: "aniversario.mp3" }
+  aniversario: { texto: "🥳 Eu não poderia nunca deixar de lembrar que hoje (23/09, dessa vez não vou errar KKJKJK) é o dia especial do amor da minha vida. Meu nenenzinho ta fazendo 31 aninhoooooos (sim, vc é um nenenzinho pra mim), e eu estou muito orgulhosa de vc amor. Por tudo que vc enfrenta todos os dias, pelo homem incrível que você é e sempre foi, e por fazer tanto todos os dias pra que nosso amor se perpetue cada vez mais. Meu neném, você é foda, e muito obrigada por escolher passar seu dia do bolo comigo. Quero que ele seja muito especial, afinal, tive a honra de poder estar contigo hoje. Feliz dia, meu anjinho! Sua sugar baby nordestina te ama e vai te amar pra sempre", foto: "aniversario.jpg", audio: "aniversario.mp3" }
 };
 
 function typeOutput(text, onComplete){
@@ -226,12 +243,12 @@ function typeOutput(text, onComplete){
   newLine.classList.add("output");
   terminal.insertBefore(newLine, document.getElementById("input-container"));
   let i=0;
-  function type(){ 
-    if(i<text.length){ 
-      newLine.innerHTML += text[i++]; 
-      terminal.scrollTop = terminal.scrollHeight; 
-      setTimeout(type,20); 
-    } else if(onComplete) onComplete(newLine); 
+  function type(){
+    if(i<text.length){
+      newLine.innerHTML += text[i++];
+      terminal.scrollTop = terminal.scrollHeight;
+      setTimeout(type,20);
+    } else if(onComplete) onComplete(newLine);
   }
   type();
 }
@@ -239,22 +256,29 @@ function typeOutput(text, onComplete){
 let currentAudio = null;
 
 function triggerAniversarioEffects(){
-  for(let i=0;i<50;i++){
+  // Confetes
+  for(let i=0;i<150;i++){
     const confetti = document.createElement("div");
     confetti.classList.add("confetti");
-    confetti.style.backgroundColor = ['#ff0','#f00','#0f0','#0ff','#f0f','#fff'][Math.floor(Math.random()*6)];
+    confetti.style.backgroundColor = ['#ff0','#f00','#0f0','#0ff','#f0f','#fff','#ff69b4','#8a2be2'][Math.floor(Math.random()*8)];
     confetti.style.left = Math.random()*window.innerWidth + 'px';
+    confetti.style.width = confetti.style.height = (5 + Math.random()*10) + 'px';
     confetti.style.animationDuration = 2 + Math.random()*2 + 's';
     document.body.appendChild(confetti);
-    setTimeout(()=>confetti.remove(),4000);
+    setTimeout(()=>confetti.remove(),5000);
   }
-  for(let i=0;i<10;i++){
+
+  // Fogos
+  for(let i=0;i<30;i++){
     const firework = document.createElement("div");
     firework.classList.add("firework");
     firework.style.left = Math.random()*window.innerWidth + 'px';
-    firework.style.backgroundColor = ['#ff0','#f00','#0f0','#0ff','#f0f','#fff'][Math.floor(Math.random()*6)];
+    firework.style.backgroundColor = ['#ff0','#f00','#0f0','#0ff','#f0f','#fff','#ff69b4','#8a2be2'][Math.floor(Math.random()*8)];
+    firework.style.width = 4 + Math.random()*6 + 'px';
+    firework.style.height = 20 + Math.random()*30 + 'px';
+    firework.style.animationDuration = 0.8 + Math.random()*0.5 + 's';
     document.body.appendChild(firework);
-    setTimeout(()=>firework.remove(),800);
+    setTimeout(()=>firework.remove(),1000);
   }
 }
 
@@ -262,7 +286,6 @@ input.addEventListener("keydown", function(event){
   if(event.key === "Enter"){
     const valor = input.value.trim().toLowerCase();
     const cmd = comandos[valor];
-
     if(cmd){
       typeOutput(`> ${input.value}\n`, function(newLine){
         if(cmd.foto){
@@ -277,7 +300,9 @@ input.addEventListener("keydown", function(event){
           currentAudio.play();
         }
 
-        if(valor==="aniversario"){ triggerAniversarioEffects(); }
+        if(valor==="aniversario"){
+          triggerAniversarioEffects();
+        }
 
         if(valor==="diasjuntos"){
           newLine.innerHTML += `Nós estamos juntos há <span id="contador"></span> 💜`;
@@ -286,8 +311,8 @@ input.addEventListener("keydown", function(event){
           let i=0;
           function typeTxt(){
             if(i<cmd.texto.length){
-              newLine.innerHTML += cmd.texto[i++];
-              terminal.scrollTop = terminal.scrollHeight;
+              newLine.innerHTML+=cmd.texto[i++];
+              terminal.scrollTop=terminal.scrollHeight;
               setTimeout(typeTxt,20);
             }
           }
@@ -301,7 +326,7 @@ input.addEventListener("keydown", function(event){
   }
 });
 
-// Hearts atrás do terminal
+// Chuva atrás do terminal
 function createTerminalHeart(){
   const heart=document.createElement("div");
   heart.classList.add("heart");
@@ -313,7 +338,7 @@ function createTerminalHeart(){
 }
 setInterval(createTerminalHeart,300);
 
-// Hearts dentro do menu
+// Chuva dentro do menu
 function createMenuHeart(){
   const menu=document.getElementById("menu-lateral");
   const heart=document.createElement("div");
