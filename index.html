@@ -145,6 +145,40 @@ input {
 @keyframes fallMenu {
   to { transform: translateY(90vh); } /* Vai até o fim da tela */
 }
+
+/* Confetes e fogos de aniversario */
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  opacity: 0.9;
+  pointer-events: none;
+  border-radius: 50%;
+  animation: confettiFall linear forwards;
+  z-index: 20;
+}
+
+@keyframes confettiFall {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(720deg); }
+}
+
+.firework {
+  position: fixed;
+  width: 4px;
+  height: 20px;
+  background-color: yellow;
+  pointer-events: none;
+  animation: fireworkAnim 0.8s ease-out forwards;
+  z-index: 20;
+}
+
+@keyframes fireworkAnim {
+  0% { transform: translateY(0) scaleY(1); opacity: 1; }
+  50% { transform: translateY(-50px) scaleY(2); opacity: 1; }
+  100% { transform: translateY(-100px) scaleY(1); opacity: 0; }
+}
 </style>
 </head>
 <body>
@@ -175,6 +209,7 @@ input {
   <p>amor</p>
   <p>textinho</p>
   <p>diasjuntos</p>
+  <p>aniversario</p>
 </div>
 
 <script>
@@ -182,23 +217,10 @@ const terminal = document.getElementById("terminal");
 const input = document.getElementById("input");
 
 const comandos = {
-  help: { texto: "Comandos disponíveis: nossosimbolo, chimarrao, yakisoba, deadpool, primeirobeijo, primeiravez, outback, cafe, funkos, musica, amor, textinho, diasjuntos", foto: null, audio: null },
-  nossosimbolo: { texto: `💞 Nosso símbolo é o Kindred, pois de fato: nunca um sem o outro. Somos corpo e alma correndo lado a lado 💞`, foto: "kindred.jpg", audio: "kindred.mp3" },
-  chimarrao: { texto: `🧉 Tomei meu primeiro chimarrão graças a você, amor! Cada gole tem o gostinho dos nossos momentos juntos 💚`, foto: "chimarrao.jpg", audio: "chimarrao.mp3" },
-  yakisoba: { texto: `🍜 Aquele yakisoba que você fez foi tão gostoso quanto o seu carinho e seus beijos. Eu amei cada garfada. Ficou perfeito, pra mim vc ganhou 50 estrelas michelinnnn  💜`, foto: "yakisoba.jpg", audio: "yakisoba.mp3" },
-  deadpool: { texto: `🎬 Assistimos Deadpool juntos e foi perfeito, porque qualquer filme fica 1000x melhor quando vemos juntos 😍`, foto: "deadpool.jpeg", audio: "deadpool.mp3" },
-  primeirobeijo: { texto: `💋 Nosso primeiro beijo tímido no aeroporto de Campina ainda me faz sentir borboletas na barriga. Encaixou de primeira, e ali eu soube que tudo daria certo entre nós dois, meu amor. 🥰`, foto: "primeirobeijo.jpg", audio: "beijo.mp3" },
-  primeiravez: { texto: `✨ Nossa primeira vez em 16/04/25 foi simplesmente mágica, amor. Um momento só nosso que guardo no coração, e cada toque seu me dá calafrios de amor sempre 💜`, foto: "primeiravez.jpg", audio: "primeiravez.mp3" },
-  outback: { texto: `🥩 Nosso almoço no Outback foi marcante, não só pela comida (também por ela, claro KKKK), mas porque estávamos juntos, rindo, sendo nós colecionando mais um momento incrível 💕`, foto: "outback.jpg", audio: "outback.mp3" },
-  cafe: { texto: `☕ Eu só tomei café de verdade porque você trouxe pra mim. Agora todo café gostoso tem gosto de você 🤎`, foto: "cafe.jpg", audio: "cafe.mp3" },
-  funkos: { texto: `🧸 Você me deu meus primeiros Funkos Pop e minha primeira action figureee, e cada um carrega um pedacinho do nosso amor 💜`, foto: "funkos.jpg", audio: null },
-  musica: { texto: `🎶 Nossa música é 'I Wanna Be Yours' do Arctic Monkeys. Porque eu sou sua, e quero ser sua em todos os sentidos ❤️`, foto: "iwannabeyours.jpg", audio: "iwannabeyours.mp3" },
-  amor: { texto: `💖 Rafa, você me ajuda todos os dias a superar meus traumas. Obrigada por ser meu porto seguro. Com você eu sinto que nada pode me abalar, pos posso contar com seu carinho pra me acalmar. Eu te amo infinitamente. 💜`, foto: "amor.jpg", audio: "textinho.mp3" },
-  textinho: { texto: `🥰 Meu amor, você não sabe a alegria que é pra mim poder te ter comigo. Vc foi a melhor coisa que me aconteceu, a melhor pessoa que já conheci, e quero poder colecionar cada vez mais momentos juntos e te proporcionar tudo que você merece. Eu te amo mais que tudo nesse mundo, e ter você comigo significa que estarei bem e que nada vai poder me abalar. Meus parabéns por ser um homem tão incrível. De brinde pra esse comando, fique com minha foto toda sujinha de subway KKKKK. Te quero pra sempre, meu bbzinho! 💞💜💖`, foto: "textinho.jpg", audio: "textinho.mp3" },
-  diasjuntos: { texto: "", foto: "diasjuntos.jpg", audio: "diasjuntos.mp3" },
-  aniversario: { texto: `🥳 Eu não poderia nunca deixar de lembrar que hoje (23/09, dessa vez não vou errar KKJKJK) é o dia especial do amor da minha vida. Meu nenenzinho ta fazendo 31 aninhoooooos (sim, vc é um nenenzinho pra mim), e eu estou muito orgulhosa de vc amor. Por tudo que vc enfrenta todos os dias, pelo homem incrível que você é e sempre foi, e por fazer tanto todos os dias pra que nosso amor se perpetue cada vez mais. Meu neném, você é foda, e muito obrigada por escolher passar seu dia do bolo comigo. Quero que ele seja muito especial, afinal, tive a honra de poder estar contigo hoje. Feliz dia, meu anjinho! Sua sugar baby nordestina te ama e vai te amar pra sempre`, foto: 
+  /* ...seu objeto comandos aqui igual ao que você mandou... */
 };
 
+// Função para digitar o texto no terminal
 function typeOutput(text, onComplete){
   const newLine = document.createElement("div");
   newLine.classList.add("output");
@@ -216,6 +238,30 @@ function typeOutput(text, onComplete){
 
 let currentAudio = null;
 
+// Efeitos de aniversario
+function triggerAniversarioEffects(){
+  // Confetes
+  for(let i=0;i<50;i++){
+    const confetti = document.createElement("div");
+    confetti.classList.add("confetti");
+    confetti.style.backgroundColor = ['#ff0','#f00','#0f0','#0ff','#f0f','#fff'][Math.floor(Math.random()*6)];
+    confetti.style.left = Math.random()*window.innerWidth + 'px';
+    confetti.style.animationDuration = 2 + Math.random()*2 + 's';
+    document.body.appendChild(confetti);
+    setTimeout(()=>confetti.remove(),4000);
+  }
+  // Fogos
+  for(let i=0;i<10;i++){
+    const firework = document.createElement("div");
+    firework.classList.add("firework");
+    firework.style.left = Math.random()*window.innerWidth + 'px';
+    firework.style.backgroundColor = ['#ff0','#f00','#0f0','#0ff','#f0f','#fff'][Math.floor(Math.random()*6)];
+    document.body.appendChild(firework);
+    setTimeout(()=>firework.remove(),800);
+  }
+}
+
+// Captura Enter
 input.addEventListener("keydown", function(event){
   if(event.key === "Enter"){
     const valor = input.value.trim().toLowerCase();
@@ -232,6 +278,10 @@ input.addEventListener("keydown", function(event){
           if(currentAudio){ currentAudio.pause(); currentAudio.currentTime=0; }
           currentAudio = new Audio(cmd.audio);
           currentAudio.play();
+        }
+
+        if(valor==="aniversario"){
+          triggerAniversarioEffects();
         }
 
         if(valor==="diasjuntos"){
