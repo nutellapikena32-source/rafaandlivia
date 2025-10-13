@@ -2,6 +2,7 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Console do Amor 💙🤍</title>
 <style>
 body {
@@ -16,6 +17,7 @@ body {
   align-items: flex-start;
   overflow: hidden;
   gap: 2%;
+  flex-wrap: nowrap;
 }
 
 /* Terminal central */
@@ -44,7 +46,7 @@ body {
 .output {
   margin: 12px 0;
   line-height: 1.5;
-  color: #ffffff; /* Letras brancas */
+  color: #ffffff;
 }
 
 input {
@@ -73,7 +75,7 @@ input {
   border-top: 1px solid #00aaff;
 }
 
-/* Fotos um pouco maiores e legíveis */
+/* Fotos */
 .command-image {
   max-width: 400px;
   max-height: 300px;
@@ -122,7 +124,7 @@ input {
   font-size: 1em;
 }
 
-/* Hearts atrás do terminal */
+/* Corações e efeitos */
 .heart {
   position: fixed;
   top: -2em;
@@ -135,7 +137,6 @@ input {
   to { transform: translateY(110vh); }
 }
 
-/* Hearts dentro do menu */
 .menu-heart {
   position: absolute;
   font-size: 1em;
@@ -143,10 +144,9 @@ input {
   animation: fallMenu linear forwards;
 }
 @keyframes fallMenu {
-  to { transform: translateY(90vh); } /* Vai até o fim da tela */
+  to { transform: translateY(90vh); }
 }
 
-/* Confetes e fogos de aniversario */
 .confetti {
   position: fixed;
   width: 10px;
@@ -158,7 +158,6 @@ input {
   animation: confettiFall linear forwards;
   z-index: 20;
 }
-
 @keyframes confettiFall {
   0% { transform: translateY(0) rotate(0deg); }
   100% { transform: translateY(100vh) rotate(720deg); }
@@ -173,11 +172,43 @@ input {
   animation: fireworkAnim 0.8s ease-out forwards;
   z-index: 20;
 }
-
 @keyframes fireworkAnim {
   0% { transform: translateY(0) scaleY(1); opacity: 1; }
   50% { transform: translateY(-50px) scaleY(2); opacity: 1; }
   100% { transform: translateY(-100px) scaleY(1); opacity: 0; }
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 900px) {
+  body {
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    height: auto;
+    gap: 20px;
+  }
+
+  #menu-lateral, #terminal {
+    width: 90%;
+    height: auto;
+  }
+
+  #menu-lateral {
+    order: -1; /* menu vai pra cima */
+  }
+
+  .title {
+    font-size: 1.5em;
+  }
+
+  .command-image {
+    max-width: 100%;
+    height: auto;
+  }
+
+  input {
+    font-size: 16px;
+  }
 }
 </style>
 </head>
@@ -231,7 +262,7 @@ const comandos = {
   outback: { texto: "🥩 Nosso almoço no Outback foi marcante, não só pela comida (também por ela, claro KKKK), mas porque estávamos juntos, rindo, sendo nós colecionando mais um momento incrível 💕", foto: "outback.jpg", audio: "outback.mp3" },
   cafe: { texto: "☕ Eu só tomei café de verdade porque você trouxe pra mim. Agora todo café gostoso tem gosto de você 🤎", foto: "cafe.jpg", audio: "cafe.mp3" },
   funkos: { texto: "🧸 Você me deu meus primeiros Funkos Pop e minha primeira action figureee, e cada um carrega um pedacinho do nosso amor 💜", foto: "funkos.jpg", audio: null },
-  musica: { texto: "🎶 Nossa música é 'I Wanna Be Yours' do Arctic Monkeys. Porque eu sou sua, e quero ser sua em todos os sentidos ❤️", foto: "iwannabeyours.jpg", audio: "iwannabeyours.mp3" },
+  musica: { texto: "🎶 Nossa música é 'I Wanna Be Yours' do Arctic Monkeys. Porque eu sou sua, e quero ser sua em todos os sentidos ❤", foto: "iwannabeyours.jpg", audio: "iwannabeyours.mp3" },
   amor: { texto: "💖 Rafa, você me ajuda todos os dias a superar meus traumas. Obrigada por ser meu porto seguro. Com você eu sinto que nada pode me abalar, pois posso contar com seu carinho pra me acalmar. Eu te amo infinitamente. 💜", foto: "amor.jpg", audio: "textinho.mp3" },
   textinho: { texto: "🥰 Meu amor, você não sabe a alegria que é pra mim poder te ter comigo. Vc foi a melhor coisa que me aconteceu, a melhor pessoa que já conheci, e quero poder colecionar cada vez mais momentos juntos e te proporcionar tudo que você merece. Eu te amo mais que tudo nesse mundo, e ter você comigo significa que estarei bem e que nada vai poder me abalar. Meus parabéns por ser um homem tão incrível. De brinde pra esse comando, fique com minha foto toda sujinha de subway KKKKK. Te quero pra sempre, meu bbzinho! 💞💜💖", foto: "textinho.jpg", audio: "textinho.mp3" },
   diasjuntos: { texto: "", foto: "diasjuntos.jpg", audio: "diasjuntos.mp3" },
@@ -287,7 +318,7 @@ input.addEventListener("keydown", function(event){
     const valor = input.value.trim().toLowerCase();
     const cmd = comandos[valor];
     if(cmd){
-      typeOutput(`> ${input.value}\n`, function(newLine){
+      typeOutput(> ${input.value}\n, function(newLine){
         if(cmd.foto){
           const img = document.createElement("img");
           img.src = cmd.foto;
@@ -305,7 +336,7 @@ input.addEventListener("keydown", function(event){
         }
 
         if(valor==="diasjuntos"){
-          newLine.innerHTML += `Nós estamos juntos há <span id="contador"></span> 💜`;
+          newLine.innerHTML += Nós estamos juntos há <span id="contador"></span> 💜;
           atualizarContador();
         } else {
           let i=0;
@@ -320,7 +351,7 @@ input.addEventListener("keydown", function(event){
         }
       });
     } else {
-      typeOutput(`> ${input.value}\nComando não encontrado 💔. Digita algum comando do menu, mo.`);
+      typeOutput(> ${input.value}\nComando não encontrado 💔. Digita algum comando do menu, mo.);
     }
     input.value="";
   }
@@ -343,7 +374,7 @@ function createMenuHeart(){
   const menu=document.getElementById("menu-lateral");
   const heart=document.createElement("div");
   heart.classList.add("menu-heart");
-  heart.innerText=["💖","❤️","💜"][Math.floor(Math.random()*3)];
+  heart.innerText=["💖","❤","💜"][Math.floor(Math.random()*3)];
   heart.style.left=Math.random()*(menu.clientWidth-20)+"px";
   heart.style.top="-1em";
   heart.style.animationDuration=2+Math.random()*2+"s";
@@ -362,7 +393,7 @@ function atualizarContador(){
   const minutos=Math.floor((diff/(1000*60))%60);
   const segundos=Math.floor((diff/1000)%60);
   const contador=document.getElementById("contador");
-  if(contador) contador.innerText=`${dias} dias, ${horas}h ${minutos}m ${segundos}s`;
+  if(contador) contador.innerText=${dias} dias, ${horas}h ${minutos}m ${segundos}s;
 }
 setInterval(atualizarContador,1000);
 </script>
