@@ -287,7 +287,7 @@ input.addEventListener("keydown", function(event){
     const valor = input.value.trim().toLowerCase();
     const cmd = comandos[valor];
     if(cmd){
-      typeOutput(> ${input.value}\n, function(newLine){
+      typeOutput(`> ${input.value}\n`, function(newLine){
         if(cmd.foto){
           const img = document.createElement("img");
           img.src = cmd.foto;
@@ -305,7 +305,7 @@ input.addEventListener("keydown", function(event){
         }
 
         if(valor==="diasjuntos"){
-          newLine.innerHTML += Nós estamos juntos há <span id="contador"></span> 💜;
+          newLine.innerHTML += `Nós estamos juntos há <span id="contador"></span> 💜`;
           atualizarContador();
         } else {
           let i=0;
@@ -320,7 +320,7 @@ input.addEventListener("keydown", function(event){
         }
       });
     } else {
-      typeOutput(> ${input.value}\nComando não encontrado 💔. Digita algum comando do menu, mo.);
+      typeOutput(`> ${input.value}\nComando não encontrado 💔. Digita algum comando do menu, mo.`);
     }
     input.value="";
   }
@@ -362,7 +362,7 @@ function atualizarContador(){
   const minutos=Math.floor((diff/(1000*60))%60);
   const segundos=Math.floor((diff/1000)%60);
   const contador=document.getElementById("contador");
-  if(contador) contador.innerText=${dias} dias, ${horas}h ${minutos}m ${segundos}s;
+  if(contador) contador.innerText=`${dias} dias, ${horas}h ${minutos}m ${segundos}s`;
 }
 setInterval(atualizarContador,1000);
 </script>
