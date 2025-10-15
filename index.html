@@ -2,517 +2,337 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Lívia & Rafa — Backstory 💌</title>
+<title>Lívia and Rafa – Love Backstory 💖</title>
 <style>
-/* === BASE / FONTS (system monospace for vintage vibe) === */
-:root{
-  --bg1: #f5e9e6;
-  --bg2: #f7efe8;
-  --accent: #c47b9b;
-  --accent-2: #ffdfe9;
-  --text: #2b1d1f;
-  --glass: rgba(255,255,255,0.06);
-  --glow: rgba(196,123,155,0.16);
-}
-
-/* page */
-*{box-sizing:border-box}
-html,body{height:100%}
-body {
+body, html {
   margin: 0;
-  padding: 24px;
+  padding: 0;
   font-family: "Courier New", monospace;
-  background:
-    radial-gradient(1200px 600px at 10% 10%, rgba(255,240,236,0.6), transparent),
-    linear-gradient(180deg, #fdf7f6 0%, #f6edea 100%);
-  color: var(--text);
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 18px;
-  min-height:100vh;
-  -webkit-font-smoothing:antialiased;
+  overflow: hidden;
+  height: 100%;
 }
 
-/* container central */
-.app {
-  width: 1100px;
-  max-width: calc(100% - 48px);
-  display: grid;
-  grid-template-columns: 1fr 340px;
-  gap: 18px;
-  align-items:start;
-}
-
-/* terminal card (left) */
-#terminal {
-  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,250,248,0.98));
-  border-radius: 18px;
-  padding: 22px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-  border: 1px solid rgba(180,130,150,0.12);
+/* Tela Inicial */
+#intro {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#intro h1 {
+  color: #ff1c1c;
+  font-size: 3em;
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #ffaaaa;
+}
+
+#intro button {
+  padding: 15px 30px;
+  font-size: 1.2em;
+  border-radius: 12px;
+  border: none;
+  background-color: #ff69b4;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 0 15px #ff69b4;
+}
+
+#intro img {
+  margin-top: 20px;
+  max-width: 300px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px #ff69b4;
+}
+
+/* Tela de Comandos */
+#main {
+  display: none;
+  height: 100%;
+  background-color: #2b2b2b;
+  color: #fff;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 2%;
   overflow: hidden;
-  position:relative;
 }
 
-/* decorative frame */
-#terminal::before{
-  content:'';
-  position:absolute;
-  inset: -6px;
-  border-radius:22px;
-  pointer-events:none;
-  background: linear-gradient(90deg, rgba(255,220,230,0.08), rgba(255,240,245,0));
-  z-index:0;
+#terminal {
+  width: 65%;
+  height: 90vh;
+  background-color: #3c3c3c;
+  border-radius: 20px;
+  padding: 20px 30px 80px 30px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  position: relative;
 }
 
-/* header */
-.header-row{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  z-index:2;
-}
 .title {
-  font-size:1.25rem;
-  color: #8b3a5b;
-  margin:0;
-  padding:0;
-  letter-spacing:0.5px;
-  text-shadow: 0 1px 0 rgba(255,255,255,0.6);
+  font-size: 2em;
+  text-align: center;
+  color: #ff6b81;
+  margin-bottom: 20px;
 }
-.subtitle { font-size:0.85rem; color:#6b3a4a; opacity:0.9; }
 
-/* controls (play/backstory) */
-.controls { display:flex; gap:8px; align-items:center; }
-.btn {
-  background: linear-gradient(180deg, #ffdfe9, #ffeef6);
-  border: 1px solid rgba(180,100,130,0.18);
-  padding:6px 10px;
-  border-radius:10px;
-  cursor:pointer;
-  font-weight:700;
-  font-size:0.85rem;
-  box-shadow:0 3px 8px rgba(196,123,155,0.08);
-}
-.btn:active{transform:translateY(1px)}
-
-/* content area (scrollable) */
-.terminal-body{
-  margin-top:14px;
-  padding-right:6px;
-  overflow-y:auto;
-  flex:1;
-  z-index:2;
-}
 .output {
-  margin: 10px 0;
-  line-height:1.5;
-  color: #3a2026;
-  background: linear-gradient(90deg, rgba(255,255,255,0.0), rgba(255,255,255,0.0));
-  padding:6px 8px;
-  border-radius:8px;
-  word-wrap:break-word;
-  white-space: pre-wrap; /* keep line breaks typed */
-  font-size:0.98rem;
+  margin: 12px 0;
+  line-height: 1.5;
+  color: #fff;
 }
 
-/* typed prompt area at bottom */
+input {
+  background: none;
+  border: none;
+  color: #ff6b81;
+  font-family: inherit;
+  font-size: 18px;
+  width: 100%;
+  outline: none;
+}
+
+.prompt {
+  font-weight: bold;
+  color: #fff;
+}
+
 #input-container {
-  display:flex;
-  gap:8px;
-  align-items:center;
-  margin-top:12px;
-  z-index:2;
-}
-.prompt { font-weight:700; color:#8b3a5b; }
-#input {
-  background: linear-gradient(180deg, rgba(255,250,249,0.7), rgba(255,245,244,0.8));
-  border:1px solid rgba(180,130,150,0.12);
-  padding:10px 12px;
-  border-radius:10px;
-  outline:none;
-  width:100%;
-  color: #6b2d40;
-  font-family:inherit;
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  background-color: #3c3c3c;
+  padding: 10px 0;
+  border-top: 1px solid #ff6b81;
 }
 
-/* image shown in outputs */
 .command-image {
-  display:block;
-  margin-top:10px;
-  max-width:420px;
-  max-height:320px;
-  width:100%;
-  border-radius:12px;
-  box-shadow: 0 10px 30px rgba(139,58,91,0.08);
-  border: 6px solid rgba(255,245,244,0.6); /* polaroid feel */
-  transition: transform .45s ease, opacity .45s ease;
-  transform-origin: center;
-  opacity:0;
+  max-width: 400px;
+  max-height: 300px;
+  margin-top: 10px;
+  display: block;
+  border-radius: 15px;
 }
 
-/* small tag under photo like polaroid caption */
-.photo-caption {
-  font-size:0.85rem;
-  color:#5b333b;
-  margin-top:6px;
-  opacity:0.95;
-}
-
-/* right panel menu (timeline & commands) */
+/* Menu lateral */
 #menu-lateral {
-  background: linear-gradient(180deg,#fff9fb,#fff7fa);
-  border-radius:16px;
-  padding:16px;
-  height:80vh;
-  overflow:auto;
-  border:1px solid rgba(200,150,170,0.08);
-  box-shadow: 0 8px 30px rgba(196,123,155,0.06);
+  width: 25%;
+  height: 90vh;
+  background-color: #444;
+  border-radius: 20px;
+  padding: 15px;
+  overflow: hidden;
+  color: #fff;
+  position: relative;
 }
-#menu-lateral h2 { margin:0 0 10px 0; color:#9b4262; }
-.command-list p { margin:8px 0; padding:8px; background:linear-gradient(90deg, rgba(255,240,245,0.7), rgba(255,250,248,0.7)); border-radius:8px; cursor:pointer; font-weight:700; color:#6b2d40; }
-.command-list p:hover{transform:translateX(6px)}
-
-/* small live counter card */
-.counter-card{
-  margin-top:12px;
-  padding:10px;
-  border-radius:10px;
-  background: linear-gradient(180deg,#fff6f8,#fff2f5);
-  text-align:center;
-  border:1px solid rgba(200,150,170,0.06);
-}
-.counter-card h3{margin:0;color:#9b4262}
-.counter-card p{margin:6px 0 0 0;color:#5b333b;font-weight:700}
-
-/* hearts/petals floating (soft) */
-.falling {
-  position:fixed;
-  top:-3em;
-  font-size:1.2em;
-  opacity:0.9;
-  pointer-events:none;
-  transform:translateY(0);
-  animation: fallSlow linear forwards;
-  z-index:1;
-}
-@keyframes fallSlow { to { transform: translateY(110vh) rotate(360deg);} }
-
-/* small responsive tweaks */
-@media (max-width:900px){
-  .app{ grid-template-columns: 1fr; }
-  #menu-lateral{ order: -1; width:100%; height:auto; max-height:42vh; }
-  #terminal{ height: calc(100vh - 240px); }
-  .command-image{ max-width:100%; }
+#menu-lateral h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 1.3em;
+  color: #ff69b4;
 }
 
-/* gentle fade-in helper */
-.fade-in { opacity:1 !important; transform: scale(1) !important; }
+/* Hearts */
+.heart {
+  position: fixed;
+  top: -2em;
+  font-size: 1.5em;
+  pointer-events: none;
+  animation: fall 5s linear forwards;
+}
+
+@keyframes fall {
+  to { transform: translateY(110vh); }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  #main {
+    flex-direction: column;
+    align-items: center;
+  }
+  #terminal, #menu-lateral {
+    width: 90%;
+  }
+  #intro img { max-width: 70%; }
+}
 </style>
 </head>
 <body>
 
-<div class="app">
-  <!-- TERMINAL -->
-  <div id="terminal" role="main" aria-label="Terminal do Amor">
-    <div class="header-row">
-      <div>
-        <h1 class="title">💙 Diário do Amor — Lívia & Rafa</h1>
-        <div class="subtitle">Terminal das memórias • digita um comando e revive</div>
-      </div>
+<!-- Tela Inicial -->
+<div id="intro">
+  <h1>Lívia and Rafa – Love Backstory 💖</h1>
+  <button id="startBtn">Clique aqui para iniciar 💌</button>
+  <img src="amor.jpg" alt="Amor">
+</div>
 
-      <div class="controls">
-        <button class="btn" id="play-story">📖 Relembrar nossa história</button>
-        <button class="btn" id="help-btn">❓ Comandos</button>
-      </div>
-    </div>
-
-    <div class="terminal-body" id="terminal-body" tabindex="0">
-      <div class="output">Bem-vindo ao nosso diário interativo — digita um comando do menu pra ver fotos, ouvir áudios e ler textinhos ♥</div>
-      <div class="output">Dica: experimenta <strong>viagem2</strong>, <strong>primeirobeijo</strong> ou <strong>aniversario</strong> :)</div>
-    </div>
-
+<!-- Tela de Comandos -->
+<div id="main">
+  <div id="terminal">
+    <div class="title">💖 Console do Amor 💖</div>
+    <div class="output">Bem-vindo, Rafa! Todos os nossos momentos especiais estão aqui 😍</div>
+    <div class="output">Digite os comandos do menu para ter uma surpresa!</div>
     <div id="input-container">
-      <span class="prompt">&gt;</span>
-      <input id="input" autocomplete="off" placeholder="Digite um comando..." />
+      <span class="prompt"></span>
+      <input id="input" autofocus>
     </div>
   </div>
-
-  <!-- MENU LATERAL / TIMELINE -->
-  <aside id="menu-lateral">
-    <h2>💖 Menu / Backstory</h2>
-    <div class="command-list" id="command-list">
-      <!-- populate from JS for consistency -->
-    </div>
-
-    <div class="counter-card" title="Dias juntos">
-      <h3>📆 Dias Juntos</h3>
-      <p id="contador">0 dias</p>
-    </div>
-
-    <div style="margin-top:10px;font-size:0.9rem;color:#6b2d40;opacity:0.95">
-      <strong>Segredo:</strong> alguns comandos têm surpresa (áudios/fotos). Guarda o segredo ♥
-    </div>
-  </aside>
+  <div id="menu-lateral">
+    <h2>💖 Comandos 💖</h2>
+    <p>nossosimbolo</p>
+    <p>chimarrao</p>
+    <p>yakisoba</p>
+    <p>deadpool</p>
+    <p>primeirobeijo</p>
+    <p>primeiravez</p>
+    <p>outback</p>
+    <p>cafe</p>
+    <p>funkos</p>
+    <p>musica</p>
+    <p>amor</p>
+    <p>textinho</p>
+    <p>diasjuntos</p>
+    <p>aniversario</p>
+  </div>
 </div>
 
 <script>
-/* ===== ASSETS NOTE =====
-Place your image and audio files in the same folder as this HTML (or adjust paths).
-This prototype uses the same asset names you provided (kindred.jpg, chimarrao.jpg, etc.)
-======================== */
+// Botão iniciar
+const startBtn = document.getElementById("startBtn");
+const intro = document.getElementById("intro");
+const main = document.getElementById("main");
 
-/* DOM refs */
-const terminalBody = document.getElementById('terminal-body');
-const input = document.getElementById('input');
-const cmdListEl = document.getElementById('command-list');
-const contadorEl = document.getElementById('contador');
-const playBtn = document.getElementById('play-story');
-const helpBtn = document.getElementById('help-btn');
+startBtn.addEventListener("click", () => {
+  intro.style.display = "none";
+  main.style.display = "flex";
+  createMouseHearts();
+});
 
+// Chuva de corações na tela inicial ao mover o mouse
+function createMouseHearts(){
+  document.addEventListener("mousemove", (e)=>{
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "💖";
+    heart.style.left = `${e.clientX}px`;
+    heart.style.top = `${e.clientY}px`;
+    heart.style.fontSize = `${Math.random()*20+15}px`;
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(), 3000);
+  });
+}
+
+// Chuva de corações atrás do terminal
+function createTerminalHeart(){
+  const heart=document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerText=["💙","🤍","🖤"][Math.floor(Math.random()*3)];
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.animationDuration=3+Math.random()*2+"s";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),5000);
+}
+setInterval(createTerminalHeart,300);
+
+// Comandos originais, textos, fotos e áudios
+const terminalEl = document.getElementById("terminal");
+const input = document.getElementById("input");
 let currentAudio = null;
 
-/* commands data (kept same text/images/audios + added viagem2 prototype) */
 const comandos = {
-  help: { texto: "Comandos disponíveis: nossosimbolo, chimarrao, yakisoba, deadpool, primeirobeijo, primeiravez, outback, cafe, funkos, musica, amor, textinho, diasjuntos, aniversario, viagem2", foto: null, audio: null },
-  nossosimbolo: { texto: "💞 Nosso símbolo é o Kindred — sempre juntos. Corpo e alma, meu amor.", foto: "kindred.jpg", audio: "kindred.mp3" },
-  chimarrao: { texto: "🧉 Lembro do teu chimarrão e do riso quando eu tentei tomar KKK. Cada gole tem gosto de nós.", foto: "chimarrao.jpg", audio: "chimarrao.mp3" },
-  yakisoba: { texto: "🍜 Yakisoba memorável — rimos até chorar. Teu tempero venceu tudo.", foto: "yakisoba.jpg", audio: "yakisoba.mp3" },
-  deadpool: { texto: "🎬 Deadpool e pipoca, e o teu abraço que deixou o filme perfeito.", foto: "deadpool.jpeg", audio: "deadpool.mp3" },
-  primeirobeijo: { texto: "💋 Primeiro beijo tímido no aeroporto de Campina. Eu soube ali que era tu.", foto: "primeirobeijo.jpg", audio: "beijo.mp3" },
-  primeiravez: { texto: "✨ 16/04/25 — nossa primeira vez. Um misto de medo e encanto. Te amo.", foto: "primeiravez.jpg", audio: "primeiravez.mp3" },
-  outback: { texto: "🥩 Almoço no Outback: risadas, olhos puxando conversa e lembranças gostosas.", foto: "outback.jpg", audio: "outback.mp3" },
-  cafe: { texto: "☕ Café que tem gosto de você — agora todo café me lembra teu cuidado.", foto: "cafe.jpg", audio: "cafe.mp3" },
-  funkos: { texto: "🧸 Meus primeiros Funkos — cada um um pedacinho do que a gente coleciona.", foto: "funkos.jpg", audio: null },
-  musica: { texto: "🎶 Nossa música: 'I Wanna Be Yours' — a música que é só nossa.", foto: "iwannabeyours.jpg", audio: "iwannabeyours.mp3" },
-  amor: { texto: "💖 Rafa, você é meu porto. Obrigada por estar aqui, por tudo — eu te amo.", foto: "amor.jpg", audio: "textinho.mp3" },
-  textinho: { texto: "🥰 Te ter foi a melhor sorte da minha vida. Te quero pra sempre.", foto: "textinho.jpg", audio: "textinho.mp3" },
+  help: { texto: "Comandos disponíveis: nossosimbolo, chimarrao, yakisoba, deadpool, primeirobeijo, primeiravez, outback, cafe, funkos, musica, amor, textinho, diasjuntos, aniversario", foto: null, audio: null },
+  nossosimbolo: { texto: "💞 Nosso símbolo é o Kindred, pois de fato: nunca um sem o outro. Somos corpo e alma correndo lado a lado 💞", foto: "kindred.jpg", audio: "kindred.mp3" },
+  chimarrao: { texto: "🧉 Tomei meu primeiro chimarrão graças a você, amor! Cada gole tem o gostinho dos nossos momentos juntos 💚", foto: "chimarrao.jpg", audio: "chimarrao.mp3" },
+  yakisoba: { texto: "🍜 Aquele yakisoba que você fez foi tão gostoso quanto o seu carinho e seus beijos. Eu amei cada garfada. Ficou perfeito, pra mim vc ganhou 50 estrelas michelinnnn 💜", foto: "yakisoba.jpg", audio: "yakisoba.mp3" },
+  deadpool: { texto: "🎬 Assistimos Deadpool juntos e foi perfeito, porque qualquer filme fica 1000x melhor quando vemos juntos 😍", foto: "deadpool.jpeg", audio: "deadpool.mp3" },
+  primeirobeijo: { texto: "💋 Nosso primeiro beijo tímido no aeroporto de Campina ainda me faz sentir borboletas na barriga. Encaixou de primeira, e ali eu soube que tudo daria certo entre nós dois, meu amor. 🥰", foto: "primeirobeijo.jpg", audio: "beijo.mp3" },
+  primeiravez: { texto: "✨ Nossa primeira vez em 16/04/25 foi simplesmente mágica, amor. Um momento só nosso que guardo no coração, e cada toque seu me dá calafrios de amor sempre 💜", foto: "primeiravez.jpg", audio: "primeiravez.mp3" },
+  outback: { texto: "🥩 Nosso almoço no Outback foi marcante, não só pela comida (também por ela, claro KKKK), mas porque estávamos juntos, rindo, sendo nós colecionando mais um momento incrível 💕", foto: "outback.jpg", audio: "outback.mp3" },
+  cafe: { texto: "☕ Eu só tomei café de verdade porque você trouxe pra mim. Agora todo café gostoso tem gosto de você 🤎", foto: "cafe.jpg", audio: "cafe.mp3" },
+  funkos: { texto: "🧸 Você me deu meus primeiros Funkos Pop e minha primeira action figureee, e cada um carrega um pedacinho do nosso amor 💜", foto: "funkos.jpg", audio: null },
+  musica: { texto: "🎶 Nossa música é 'I Wanna Be Yours' do Arctic Monkeys. Porque eu sou sua, e quero ser sua em todos os sentidos ❤", foto: "iwannabeyours.jpg", audio: "iwannabeyours.mp3" },
+  amor: { texto: "💖 Rafa, você me ajuda todos os dias a superar meus traumas. Obrigada por ser meu porto seguro. Com você eu sinto que nada pode me abalar, pois posso contar com seu carinho pra me acalmar. Eu te amo infinitamente. 💜", foto: "amor.jpg", audio: "textinho.mp3" },
+  textinho: { texto: "🥰 Meu amor, você não sabe a alegria que é pra mim poder te ter comigo. Vc foi a melhor coisa que me aconteceu, a melhor pessoa que já conheci, e quero poder colecionar cada vez mais momentos juntos e te proporcionar tudo que você merece. Eu te amo mais que tudo nesse mundo, e ter você comigo significa que estarei bem e que nada vai poder me abalar. Meus parabéns por ser um homem tão incrível. De brinde pra esse comando, fique com minha foto toda sujinha de subway KKKKK. Te quero pra sempre, meu bbzinho! 💞💜💖", foto: "textinho.jpg", audio: "textinho.mp3" },
   diasjuntos: { texto: "", foto: "diasjuntos.jpg", audio: "diasjuntos.mp3" },
-  aniversario: { texto: "🥳 Feliz dia! Te celebro sempre. Te amo, meu neném.", foto: "aniversario.jpg", audio: "aniversario.mp3" },
-  viagem2: { texto: "✈️ Segunda viagem: perdidos nas ruas, achamos o melhor pôr do sol. Rimos, tiramos fotos e fomos felizes.", foto: "viagem2.jpg", audio: "viagem2.mp3" }
+  aniversario: { texto: "🥳 Hoje é dia especial do amor da minha vida! Meu nenenzinho está fazendo 31 aninhos 🎂💖", foto: "aniversario.jpg", audio: "aniversario.mp3" }
 };
 
-/* Populate right menu from keys (keeps visual sync) */
-Object.keys(comandos).forEach(key=>{
-  const p = document.createElement('p');
-  p.textContent = key;
-  p.dataset.cmd = key;
-  p.addEventListener('click', ()=> runCommand(key));
-  cmdListEl.appendChild(p);
-});
-
-/* typing effect for text inside a new output block */
-function typeOutput(text, options = {}) {
-  return new Promise((resolve) => {
-    const newLine = document.createElement('div');
-    newLine.className = 'output';
-    terminalBody.appendChild(newLine);
-    terminalBody.scrollTop = terminalBody.scrollHeight;
-    let i = 0;
-    const speed = options.speed || 20;
-
-    function tick(){
-      if (i < text.length) {
-        newLine.textContent += text[i++];
-        terminalBody.scrollTop = terminalBody.scrollHeight;
-        setTimeout(tick, speed);
-      } else {
-        resolve(newLine);
-      }
-    }
-    tick();
-  });
-}
-
-/* show image with polaroid fade */
-function showImage(parent, src, caption){
-  return new Promise((resolve) => {
-    if(!src) return resolve();
-    const img = document.createElement('img');
-    img.className = 'command-image';
-    img.src = src;
-    img.alt = caption || '';
-    parent.appendChild(img);
-
-    // caption
-    if(caption){
-      const cap = document.createElement('div');
-      cap.className = 'photo-caption';
-      cap.textContent = caption;
-      parent.appendChild(cap);
-    }
-
-    // force reflow then fade-in
-    setTimeout(()=> {
-      img.style.transform = 'scale(1)';
-      img.style.opacity = '1';
-      img.classList.add('fade-in');
-      resolve(img);
-    }, 60);
-  });
-}
-
-/* play audio safely */
-function playAudio(src){
-  if(!src) return null;
-  try{
-    if(currentAudio){ currentAudio.pause(); currentAudio.currentTime = 0; }
-    currentAudio = new Audio(src);
-    currentAudio.volume = 0.9;
-    currentAudio.play().catch(()=>{/* autoplay may be blocked until user interacts */});
-    return currentAudio;
-  } catch(e){ return null; }
-}
-
-/* run a command: type the command echo, then show content */
-async function runCommand(key){
-  const cmd = comandos[key];
-  // echo
-  await typeOutput(`> ${key}\n`);
-  // if diasjuntos: show counter line
-  if(key === 'diasjuntos'){
-    const el = await typeOutput(`Nós estamos juntos há `);
-    const span = document.createElement('span');
-    span.id = 'contador-embedded';
-    span.style.fontWeight = '700';
-    el.appendChild(span);
-    atualizarContador(); // ensures it's updated immediately
-    return;
+function typeOutput(text, onComplete){
+  const newLine = document.createElement("div");
+  newLine.classList.add("output");
+  terminalEl.insertBefore(newLine, document.getElementById("input-container"));
+  let i=0;
+  function type(){
+    if(i<text.length){
+      newLine.innerHTML += text[i++];
+      terminalEl.scrollTop = terminalEl.scrollHeight;
+      setTimeout(type,20);
+    } else if(onComplete) onComplete(newLine);
   }
-
-  if(cmd){
-    // show text
-    if(cmd.texto && cmd.texto.length){
-      const line = await typeOutput('\n'); // small spacer
-      // create container for this event
-      const container = document.createElement('div');
-      container.className = 'output';
-      terminalBody.appendChild(container);
-      // type into container
-      await typeOutput(cmd.texto, {speed:20});
-      // show image if exists
-      if(cmd.foto){
-        await showImage(container, cmd.foto, key.replace(/_/g,' '));
-      }
-      // play audio if exists
-      if(cmd.audio){
-        playAudio(cmd.audio);
-      }
-    }
-    // if anniversary trigger confetti/fireworks
-    if(key === 'aniversario') triggerAniversarioEffects();
-  } else {
-    await typeOutput('Comando não encontrado 💔. Digita algum comando do menu, mo.');
-  }
-  terminalBody.scrollTop = terminalBody.scrollHeight;
+  type();
 }
 
-/* input handling */
-input.addEventListener('keydown', async function(e){
-  if(e.key === 'Enter'){
-    e.preventDefault();
+input.addEventListener("keydown", function(event){
+  if(event.key === "Enter"){
     const valor = input.value.trim().toLowerCase();
-    input.value = '';
-    if(!valor) return;
-    await runCommand(valor);
+    const cmd = comandos[valor];
+    if(cmd){
+      typeOutput(`> ${input.value}\n`, function(newLine){
+        if(cmd.foto){
+          const img = document.createElement("img");
+          img.src = cmd.foto;
+          img.className = "command-image";
+          newLine.appendChild(img);
+        }
+        if(cmd.audio){
+          if(currentAudio){ currentAudio.pause(); currentAudio.currentTime=0; }
+          currentAudio = new Audio(cmd.audio);
+          currentAudio.play();
+        }
+        if(valor==="diasjuntos"){
+          newLine.innerHTML += `Nós estamos juntos há <span id="contador"></span> 💜`;
+          atualizarContador();
+        } else {
+          let i=0;
+          function typeTxt(){
+            if(i<cmd.texto.length){
+              newLine.innerHTML+=cmd.texto[i++];
+              terminalEl.scrollTop=terminalEl.scrollHeight;
+              setTimeout(typeTxt,20);
+            }
+          }
+          typeTxt();
+        }
+      });
+    } else {
+      typeOutput(`> ${input.value}\nComando não encontrado 💔. Digita algum comando do menu, mo.`);
+    }
+    input.value="";
   }
 });
 
-/* help button to echo available commands */
-helpBtn.addEventListener('click', ()=> runCommand('help'));
-
-/* PLAYBACK (story mode) - sequentially plays an itinerary of keys */
-const storyOrder = ['nossosimbolo','primeirobeijo','viagem2','outback','musica','aniversario','amor'];
-
-playBtn.addEventListener('click', async function(){
-  // disable while playing
-  playBtn.disabled = true;
-  playBtn.textContent = '⌛ Relembrando...';
-  for(const k of storyOrder){
-    await new Promise(r=> setTimeout(r, 700));
-    await runCommand(k);
-    // wait a bit between scenes
-    await new Promise(r=> setTimeout(r, 900));
-  }
-  playBtn.textContent = '📖 Relembrar nossa história';
-  playBtn.disabled = false;
-});
-
-/* floating petals/hearts (soft) */
-function createFalling(){
-  const el = document.createElement('div');
-  el.className = 'falling';
-  el.innerText = ['🌸','🌷','💌','🌺'][Math.floor(Math.random()*4)];
-  el.style.left = Math.random()*100 + 'vw';
-  el.style.fontSize = (12 + Math.random()*18) + 'px';
-  el.style.animationDuration = (6 + Math.random()*6) + 's';
-  document.body.appendChild(el);
-  setTimeout(()=> el.remove(), 9000);
-}
-setInterval(createFalling, 600);
-
-/* anniversary confetti + fireworks (reuse from original) */
-function triggerAniversarioEffects(){
-  // confetti
-  for(let i=0;i<80;i++){
-    const confetti = document.createElement('div');
-    confetti.className = 'falling';
-    confetti.style.left = Math.random()*100 + 'vw';
-    confetti.style.top = '-5vh';
-    confetti.style.opacity = 0.95;
-    confetti.style.fontSize = (8 + Math.random()*18) + 'px';
-    confetti.innerText = ['✨','🎉','💖','🎊'][Math.floor(Math.random()*4)];
-    confetti.style.animationDuration = (1.6 + Math.random()*2.5) + 's';
-    document.body.appendChild(confetti);
-    setTimeout(()=> confetti.remove(), 3000);
-  }
-}
-
-/* menu hearts (inside right panel) */
-function createMenuHeart(){
-  const menu=document.getElementById('menu-lateral');
-  const heart=document.createElement('div');
-  heart.className='falling';
-  heart.innerText=['💖','❤️','💜'][Math.floor(Math.random()*3)];
-  heart.style.left = (menu.getBoundingClientRect().left + Math.random()*(menu.clientWidth-20)) + 'px';
-  heart.style.top = '-1em';
-  heart.style.fontSize = '14px';
-  heart.style.animationDuration = (2 + Math.random()*2) + 's';
-  document.body.appendChild(heart);
-  setTimeout(()=> heart.remove(), 4000);
-}
-setInterval(createMenuHeart, 700);
-
-/* contador (dias juntos) — keep same start date as original */
-const inicio = new Date("2024-12-01T00:00:00");
+// Contador de dias juntos
+const inicio=new Date("2024-12-01T00:00:00");
 function atualizarContador(){
-  const agora = new Date();
-  const diff = agora - inicio;
-  const dias = Math.floor(diff/(1000*60*60*24));
-  const horas = Math.floor((diff/(1000*60*60))%24);
-  const minutos = Math.floor((diff/(1000*60))%60);
-  const segundos = Math.floor((diff/1000)%60);
-  if(document.getElementById('contador')) document.getElementById('contador').innerText = `${dias} dias, ${horas}h ${minutos}m ${segundos}s`;
-  const emb = document.getElementById('contador-embedded');
-  if(emb) emb.innerText = `${dias} dias, ${horas}h ${minutos}m ${segundos}s`;
+  const agora=new Date();
+  const diff=agora-inicio;
+  const dias=Math.floor(diff/(1000*60*60*24));
+  const horas=Math.floor((diff/(1000*60*60))%24);
+  const minutos=Math.floor((diff/(1000*60))%60);
+  const segundos=Math.floor((diff/1000)%60);
+  const contador=document.getElementById("contador");
+  if(contador) contador.innerText=`${dias} dias, ${horas}h ${minutos}m ${segundos}s`;
 }
-setInterval(atualizarContador, 1000);
-atualizarContador();
-
-/* accessibility: focus terminal body on load */
-window.addEventListener('load', ()=> {
-  terminalBody.focus();
-});
-
-/* small UX: click command in menu also types echo (already wired) */
-
-/* End of script */
+setInterval(atualizarContador,1000);
 </script>
+
 </body>
 </html>
