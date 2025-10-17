@@ -10,12 +10,21 @@
 
   /* ===== TELA INICIAL ===== */
   #intro {
-    width:100%; height:100%; position:fixed; top:0; left:0;
-    background: url('wallpaper.jpg') no-repeat center center/cover;
-    display:flex; flex-direction:column; justify-content:center; align-items:center;
-    transition: opacity 1s ease;
-    z-index:100;
-  }
+  width:100%; 
+  height:100%; 
+  position:fixed; 
+  top:0; 
+  left:0;
+  background: url('wallpaper.jpg') no-repeat center center/cover;
+  display:flex; 
+  flex-direction:column; 
+  justify-content:flex-start; /* mudou de center para flex-start */
+  align-items:center;
+  padding-top: 80px; /* ajusta pra subir ou descer */
+  transition: opacity 1s ease;
+  z-index:100;
+}
+
   #intro.fade-out { opacity:0; pointer-events:none; }
 
   #intro h1 {
