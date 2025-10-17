@@ -109,9 +109,61 @@
 <!-- ===== TELA INICIAL ===== -->
 <div id="intro">
   <h1>Lívia and Rafa - Love Backstory</h1>
-  <img src="amor.jpg" alt="Amor">
   <button id="startBtn">✨ Iniciar nossa história ✨</button>
 </div>
+
+<style>
+/* ===== TELA INICIAL ===== */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+#intro {
+  background-image: url("wallpaper.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  position: relative;
+}
+
+#intro h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3.5rem;
+  color: #ff4d6d;
+  text-shadow: 0 0 10px rgba(255, 100, 150, 0.8),
+               0 0 20px rgba(255, 0, 80, 0.6);
+  margin-bottom: 30px;
+  animation: floatText 3s ease-in-out infinite;
+}
+
+@keyframes floatText {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+#intro button {
+  background-color: #ff4d6d;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.3rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 100, 150, 0.6);
+}
+
+#intro button:hover {
+  background-color: #ff1e56;
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 50, 100, 0.8);
+}
+</style>
 
 <!-- ===== TELA DE COMANDOS ===== -->
 <div id="main">
