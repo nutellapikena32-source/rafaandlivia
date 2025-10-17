@@ -8,58 +8,68 @@
   * { margin:0; padding:0; box-sizing:border-box; font-family:"Courier New", monospace; }
   body, html { width:100%; height:100%; overflow:hidden; }
 
-  /* ===== TELA INICIAL ===== */
-  #intro {
-  width:100%; 
-  height:100%; 
-  position:fixed; 
-  top:0; 
-  left:0;
-  background: url('wallpaper.jpg') no-repeat center center/cover;
-  display:flex; 
-  flex-direction:column; 
-  justify-content:flex-start; /* mudou de center para flex-start */
-  align-items:center;
-  padding-top: 80px; /* ajusta pra subir ou descer */
+/* ===== TELA INICIAL ===== */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+#intro {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-image: url("wallpaper.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* título e botão mais pra cima */
+  align-items: center;
+  padding-top: 80px; /* ajusta altura do topo */
+  text-align: center;
+  color: #fff;
+  z-index: 100;
   transition: opacity 1s ease;
-  z-index:100;
 }
 
-  #intro.fade-out { opacity:0; pointer-events:none; }
+#intro.fade-out { 
+  opacity: 0; 
+  pointer-events: none; 
+}
 
-  #intro h1 {
-    font-size:3em; color:red; text-shadow:0 0 20px #ff4d4d, 0 0 40px #ff99cc, 0 0 60px #ff66b3;
-    animation: pulse 1.2s infinite;
-    text-align:center;
-    font-family: 'Lucida Handwriting', cursive, monospace;
-  }
-  @keyframes pulse {
-    0%,100% { transform: scale(1); }
-    50% { transform: scale(1.08); }
-  }
+#intro h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3.5rem;
+  color: #ff4d6d;
+  text-shadow: 0 0 10px rgba(255, 100, 150, 0.8),
+               0 0 20px rgba(255, 0, 80, 0.6);
+  margin-bottom: 30px;
+  animation: floatText 3s ease-in-out infinite;
+}
 
-  #intro img {
-    margin-top:20px;
-    width:250px; border-radius:20px;
-    box-shadow:0 0 20px #ff9999, 0 0 40px #ff66b3;
-    animation: fadeIn 2s forwards;
-  }
+@keyframes floatText {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
 
-  #intro button {
-    margin-top:30px;
-    padding:15px 30px;
-    font-size:1.2em;
-    border:none;
-    border-radius:15px;
-    background: linear-gradient(45deg,#ff99cc,#ff66b3);
-    color:white;
-    cursor:pointer;
-    box-shadow:0 0 15px #ff66b3, 0 0 30px #ff99cc inset;
-    transition: transform 0.2s;
-  }
-  #intro button:hover { transform: scale(1.1); }
+#intro button {
+  background: linear-gradient(45deg, #ff99cc, #ff66b3);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.3rem;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255, 100, 150, 0.6);
+  transition: all 0.3s ease;
+  margin-top: 20px; /* espaço do botão */
+}
 
-  @keyframes fadeIn { from { opacity:0; transform:translateY(20px);} to { opacity:1; transform:translateY(0);} }
+#intro button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 50, 100, 0.8);
+}
+
 
  /* ===== CHUVINHA DE CORAÇÕES MOUSE ===== */
 .heart {
