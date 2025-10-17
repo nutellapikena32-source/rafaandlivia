@@ -52,9 +52,18 @@
 
   @keyframes fadeIn { from { opacity:0; transform:translateY(20px);} to { opacity:1; transform:translateY(0);} }
 
-  /* ===== CHUVINHA DE CORAÇÕES MOUSE ===== */
-  .heart { position:absolute; pointer-events:none; animation: fall 4s linear forwards; font-size:1em; }
-  @keyframes fall { to { transform:translateY(110vh); } }
+ /* ===== CHUVINHA DE CORAÇÕES MOUSE ===== */
+.heart {
+  position: fixed;      /* Fica sobre tudo */
+  pointer-events: none; /* Não atrapalha cliques */
+  animation: fall 4s linear forwards;
+  font-size: 1em;
+  z-index: 101;         /* Maior que o #intro */
+}
+
+@keyframes fall {
+  to { transform: translateY(110vh); opacity: 0; } /* Cai pra baixo e some */
+}
 
   /* ===== TELA DE COMANDOS ===== */
   #main { display:none; width:100%; height:100%; background:#222; color:white; overflow:hidden; }
