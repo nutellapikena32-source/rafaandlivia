@@ -344,31 +344,6 @@ function triggerAniversarioEffects(){
     setTimeout(()=>confetti.remove(),2000);
   }
 }
-
-// ===== CHUVINHA DE CORAÇÕES NO SITE TODO =====
-document.addEventListener("mousemove", e => {
-  const heart = document.createElement("div");
-  heart.className = "heart";
-  heart.style.left = e.pageX + "px";
-  heart.style.top = e.pageY + "px";
-  heart.style.fontSize = (10 + Math.random() * 10) + "px";
-  heart.innerText = ["💖", "❤️", "💜", "💙"][Math.floor(Math.random() * 4)];
-  document.body.appendChild(heart);
-  setTimeout(() => heart.remove(), 2000);
-});
-
-const style = document.createElement("style");
-style.textContent = `
-.heart {
-  position: absolute;
-  pointer-events: none;
-  animation: fall 2s linear forwards;
-}
-@keyframes fall {
-  from { transform: translateY(0) scale(1); opacity: 1; }
-  to { transform: translateY(-80px) scale(0.8); opacity: 0; }
-}`;
-document.head.appendChild(style);
 </script>
 </body>
 </html>
