@@ -24,17 +24,7 @@
     text-align:center;
     font-family: 'Lucida Handwriting', cursive, monospace;
   }
-  @keyframes pulse {
-    0%,100% { transform: scale(1); }
-    50% { transform: scale(1.08); }
-  }
-
-  #intro img {
-    margin-top:20px;
-    width:250px; border-radius:20px;
-    box-shadow:0 0 20px #ff9999, 0 0 40px #ff66b3;
-    animation: fadeIn 2s forwards;
-  }
+  @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.08); } }
 
   #intro button {
     margin-top:30px;
@@ -50,7 +40,9 @@
   }
   #intro button:hover { transform: scale(1.1); }
 
-  @keyframes fadeIn { from { opacity:0; transform:translateY(20px);} to { opacity:1; transform:translateY(0);} }
+  /* ===== CHUVINHA DE CORAÇÕES ===== */
+  .heart { position:absolute; pointer-events:none; animation: fall 4s linear forwards; font-size:1em; }
+  @keyframes fall { to { transform:translateY(110vh); } }
 
   /* ===== TELA DE COMANDOS ===== */
   #main { display:none; width:100%; height:100%; background:#222; color:white; overflow:hidden; }
@@ -148,20 +140,16 @@ const main=document.getElementById("main");
 const terminal=document.getElementById("terminal");
 const input=document.getElementById("input");
 
-// ===== CHUVINHA DE CORAÇÕES COM O MOUSE =====
-function createHeart(x, y) {
+// ===== CHUVINHA DE CORAÇÕES COM O MOUSE NA TELA INICIAL =====
+document.addEventListener("mousemove", e => {
   const heart = document.createElement("div");
   heart.className = "heart";
-  heart.style.left = x + "px";
-  heart.style.top = y + "px";
-  heart.style.fontSize = (10 + Math.random() * 15) + "px";
-  heart.innerText = ["💖","❤️","💜","💙"][Math.floor(Math.random()*4)];
+  heart.style.left = e.pageX + "px";
+  heart.style.top = e.pageY + "px";
+  heart.style.fontSize = (10 + Math.random() * 10) + "px";
+  heart.innerText = ["💖","❤️","💜","💙"][Math.floor(Math.random() * 4)];
   document.body.appendChild(heart);
   setTimeout(() => heart.remove(), 2000);
-}
-
-document.addEventListener("mousemove", e => {
-  createHeart(e.pageX, e.pageY);
 });
 
 // ===== INICIAR HISTÓRIA =====
