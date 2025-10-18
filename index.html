@@ -68,18 +68,8 @@
     #intro h1 { font-size:2em; }
     #intro img { width:200px; }
   }
-</style>
-</head>
-<body>
-
-<!-- ===== TELA INICIAL ===== -->
-<div id="intro">
-  <h1>Lívia and Rafa - Love Backstory</h1>
-  <button id="startBtn">✨ Iniciar nossa história ✨</button>
-</div>
-
-<style>
-/* ===== TELA INICIAL ===== */
+  
+  /* ===== TELA INICIAL ===== */
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 
 #intro {
@@ -91,7 +81,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: center;  /* centraliza título e botão verticalmente */
   text-align: center;
   color: #fff;
   position: relative;
@@ -129,7 +119,31 @@
   transform: scale(1.05);
   box-shadow: 0 0 20px rgba(255, 50, 100, 0.8);
 }
+
+/* ===== FADE OUT PARA INTRO ===== */
+.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+/* ===== AJUSTE RESPONSIVO PARA INTRO ===== */
+@media(max-width:768px){
+  #intro {
+    justify-content: flex-start;
+    padding-top: 50px; /* título e botão mais para cima em telas pequenas */
+  }
+}
+
+  }
 </style>
+</head>
+<body>
+
+<!-- ===== TELA INICIAL ===== -->
+<div id="intro">
+  <h1>Lívia and Rafa - Love Backstory</h1>
+  <button id="startBtn">✨ Iniciar nossa história ✨</button>
+</div>
 
 <!-- ===== TELA DE COMANDOS ===== -->
 <div id="main">
