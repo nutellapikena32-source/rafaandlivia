@@ -185,6 +185,7 @@
       <p>textinho</p>
       <p>diasjuntos</p>
       <p>aniversario</p>
+      <p>playlist</p>
     </div>
   </div>
 </div>
@@ -244,6 +245,7 @@ const comandos = {
   textinho: { texto:"🥰 Meu amor, você não sabe a alegria que é pra mim poder te ter comigo. Vc foi a melhor coisa que me aconteceu, a melhor pessoa que já conheci, e quero poder colecionar cada vez mais momentos juntos e te proporcionar tudo que você merece. Eu te amo mais que tudo nesse mundo, e ter você comigo significa que estarei bem e que nada vai poder me abalar. 💞💜💖", foto:"textinho.jpg", audio:"textinho.mp3" },
   diasjuntos: { texto:"", foto:"diasjuntos.jpg", audio:"diasjuntos.mp3" },
   aniversario: { texto:"🥳 Eu não poderia nunca deixar de lembrar que hoje (23/09) é o dia especial do amor da minha vida. Meu nenenzinho ta fazendo 31 aninhos, e eu estou muito orgulhosa de vc amor. Feliz dia, meu anjinho! Sua sugar baby nordestina te ama e vai te amar pra sempre.", foto:"aniversario.jpg", audio:"aniversario.mp3" }
+  playlist: { texto: "🎵 Abrindo nossa playlist de amor 💕", foto: "primeirobeijo.jpg", audio: null }
 };
 
 let currentAudio=null;
@@ -268,7 +270,7 @@ input.addEventListener("keydown", e=>{
   if(e.key==="Enter"){
     const valor=input.value.trim().toLowerCase();
     const cmd=comandos[valor];
-    if(cmd){
+    if(cmd){ 
       typeOutput(`> ${input.value}\n`, newLine=>{
         if(cmd.foto){
           const img=document.createElement("img");
@@ -299,8 +301,12 @@ input.addEventListener("keydown", e=>{
           typeTxt();
         }
 
-        if(valor==="aniversario") triggerAniversarioEffects();
-      });
+        if(valor === "aniversario") triggerAniversarioEffects();
+      }); // <-- fecha typeOutput de comandos existentes
+    } else if(valor === "playlist"){
+      // Comando da playlist
+      openPlaylist(); // abre o pop-up do player
+      typeOutput(`> ${input.value}\nAbrindo nossa playlist de amor 💖`, newLine => {});
     } else {
       typeOutput(`> ${input.value}\nComando não encontrado 💔. Digita algum comando do menu.`);
     }
@@ -336,5 +342,166 @@ function triggerAniversarioEffects(){
   }
 }
 </script>
+  <!-- ===== INÍCIO: PLAYER DE PLAYLIST (colar antes do </body>) ===== -->
+<!-- POP-UP DO PLAYER -->
+<div id="overlay-player" class="hidden">
+  <div class="player-container">
+    <button id="closePlayer">✖</button>
+    <img id="trackImage" src="foto1.jpg" alt="Capa da música">
+    <h3 id="trackTitle">Música 1</h3>
+    <audio id="audioPlayer" src="musica1.mp3"></audio>
+
+    <div class="controls">
+      <button id="prevBtn">⏮️</button>
+      <button id="playPauseBtn">▶️</button>
+      <button id="nextBtn">⏭️</button>
+      <button id="loopBtn">🔁</button>
+    </div>
+
+    <div class="progress">
+      <input type="range" id="progressBar" value="0" min="0" max="100">
+    </div>
+
+    <div class="time">
+      <span id="currentTime">0:00</span>
+      <span id="duration">0:00</span>
+    </div>
+  </div>
+</div>
+
+<!-- ESTILOS DO PLAYER -->
+<style>
+  #overlay-player { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 200; }
+  .hidden { display: none; }
+
+  .player-container {
+    background: #fff; color: #222; border-radius: 20px; padding: 18px; width: 320px; text-align: center; position: relative; box-shadow: 0 6px 30px rgba(0,0,0,0.6);
+    animation: popIn 0.25s ease;
+  }
+  @keyframes popIn { from { transform: scale(0.92); opacity: 0 } to { transform: scale(1); opacity: 1 } }
+
+  .player-container img { width: 100%; height: 320px; object-fit: cover; border-radius: 12px; margin-bottom: 10px; }
+  .player-container button { background: none; border: none; font-size: 22px; cursor: pointer; margin: 0 6px; }
+  #closePlayer { position: absolute; top: 10px; right: 10px; font-size: 18px; }
+  .progress input { width: 100%; cursor: pointer; margin-top: 10px; }
+  .time { font-size: 13px; display:flex; justify-content:space-between; margin-top:6px; color:#444; }
+  .controls { display:flex; justify-content:center; align-items:center; margin-top:6px; }
+</style>
+
+<!-- LÓGICA DO PLAYER -->
+<script>
+  (function(){
+    // playlist: nomes placeholder (substitui os caminhos por arquivos reais)
+    const playlist = [
+      { title: 'Música 1', file: 'musica1.mp3', img: 'foto1.jpg' },
+      { title: 'Música 2', file: 'musica2.mp3', img: 'foto2.jpg' },
+      { title: 'Música 3', file: 'musica3.mp3', img: 'foto3.jpg' },
+      /* ... cole até Música 43 ... */
+      { title: 'Música 43', file: 'musica43.mp3', img: 'foto43.jpg' },
+    ];
+
+    let currentTrack = 0;
+    let isLoop = false;
+
+    const overlay = document.getElementById('overlay-player');
+    const audio = document.getElementById('audioPlayer');
+    const playBtn = document.getElementById('playPauseBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const loopBtn = document.getElementById('loopBtn');
+    const progress = document.getElementById('progressBar');
+    const currentTimeEl = document.getElementById('currentTime');
+    const durationEl = document.getElementById('duration');
+    const img = document.getElementById('trackImage');
+    const title = document.getElementById('trackTitle');
+    const closeBtn = document.getElementById('closePlayer');
+
+    function loadTrack(index){
+      const t = playlist[index];
+      audio.src = t.file;
+      img.src = t.img;
+      title.textContent = t.title;
+      audio.load();
+      updatePlayButton();
+    }
+
+    function updatePlayButton(){
+      playBtn.textContent = audio.paused ? '▶️' : '⏸️';
+    }
+
+    playBtn.addEventListener('click', () => {
+      if(audio.paused) audio.play();
+      else audio.pause();
+      updatePlayButton();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentTrack = (currentTrack + 1) % playlist.length;
+      loadTrack(currentTrack);
+      audio.play();
+    });
+
+    prevBtn.addEventListener('click', () => {
+      currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
+      loadTrack(currentTrack);
+      audio.play();
+    });
+
+    loopBtn.addEventListener('click', () => {
+      isLoop = !isLoop;
+      loopBtn.style.opacity = isLoop ? '1' : '0.6';
+      audio.loop = isLoop;
+    });
+
+    audio.addEventListener('ended', () => {
+      if(!isLoop){
+        currentTrack = (currentTrack + 1) % playlist.length;
+        loadTrack(currentTrack);
+        audio.play();
+      }
+    });
+
+    audio.addEventListener('timeupdate', () => {
+      if(audio.duration){
+        const progressValue = (audio.currentTime / audio.duration) * 100;
+        progress.value = progressValue;
+        const curMins = Math.floor(audio.currentTime / 60);
+        const curSecs = Math.floor(audio.currentTime % 60).toString().padStart(2,'0');
+        const durMins = Math.floor(audio.duration / 60);
+        const durSecs = Math.floor(audio.duration % 60).toString().padStart(2,'0');
+        currentTimeEl.textContent = `${curMins}:${curSecs}`;
+        durationEl.textContent = `${durMins}:${durSecs}`;
+      }
+    });
+
+    progress.addEventListener('input', () => {
+      if(audio.duration) audio.currentTime = (progress.value/100) * audio.duration;
+    });
+
+    closeBtn.addEventListener('click', () => {
+      overlay.classList.add('hidden');
+      audio.pause();
+      audio.currentTime = 0;
+      playBtn.textContent = '▶️';
+    });
+
+    // função que abre o player (usada pelo comando)
+    window.openPlaylist = function(){
+      overlay.classList.remove('hidden');
+      loadTrack(currentTrack);
+    };
+
+    // Se quiser abrir com ESC fechando:
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape' && !overlay.classList.contains('hidden')){
+        overlay.classList.add('hidden');
+        audio.pause();
+      }
+    });
+
+    // FIM IIFE
+  })();
+</script>
+<!-- ===== FIM: PLAYER DE PLAYLIST ===== -->
 </body>
 </html>
