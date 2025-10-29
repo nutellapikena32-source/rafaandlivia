@@ -303,10 +303,13 @@ input.addEventListener("keydown", e=>{
 
         if(valor === "aniversario") triggerAniversarioEffects();
       }); // <-- fecha typeOutput de comandos existentes
-    } else if(valor === "playlist"){
-      // Comando da playlist
-      openPlaylist(); // abre o pop-up do player
-      typeOutput(`> ${input.value}\nAbrindo nossa playlist de amor 💖`, newLine => {});
+    
+     } else if (valor === "playlist") {
+      // Comando playlist: primeiro escreve no terminal, depois abre o player
+      typeOutput(`> ${input.value}\nAbrindo nossa playlist de amor 💖`, () => {
+        openPlaylist();
+      });
+
     } else {
       typeOutput(`> ${input.value}\nComando não encontrado 💔. Digita algum comando do menu.`);
     }
@@ -371,15 +374,16 @@ function triggerAniversarioEffects(){
 
 <!-- ESTILOS DO PLAYER -->
 <style>
-  #overlay-player { 
+#overlay-player.hidden { display: none; }
+#overlay-player { 
     position: fixed; 
     inset: 0; 
     background: rgba(0,0,0,0.7); 
-    display: none; 
+    display: flex;  /* agora fica visível quando a classe .hidden é removida */
     align-items: center; 
     justify-content: center; 
     z-index: 200; 
-  }
+}
 
   .player-container {
     background: #fff; color: #222; border-radius: 20px; padding: 18px; width: 320px; text-align: center; position: relative; box-shadow: 0 6px 30px rgba(0,0,0,0.6);
