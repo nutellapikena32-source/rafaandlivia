@@ -244,7 +244,7 @@ const comandos = {
   amor: { texto:"💖 Rafa, você me ajuda todos os dias a superar meus traumas. Obrigada por ser meu porto seguro. Com você eu sinto que nada pode me abalar, pois posso contar com seu carinho pra me acalmar. Eu te amo infinitamente. 💜", foto:"amor.jpg", audio:"textinho.mp3" },
   textinho: { texto:"🥰 Meu amor, você não sabe a alegria que é pra mim poder te ter comigo. Vc foi a melhor coisa que me aconteceu, a melhor pessoa que já conheci, e quero poder colecionar cada vez mais momentos juntos e te proporcionar tudo que você merece. Eu te amo mais que tudo nesse mundo, e ter você comigo significa que estarei bem e que nada vai poder me abalar. 💞💜💖", foto:"textinho.jpg", audio:"textinho.mp3" },
   diasjuntos: { texto:"", foto:"diasjuntos.jpg", audio:"diasjuntos.mp3" },
-  aniversario: { texto:"🥳 Eu não poderia nunca deixar de lembrar que hoje (23/09) é o dia especial do amor da minha vida. Meu nenenzinho ta fazendo 31 aninhos, e eu estou muito orgulhosa de vc amor. Feliz dia, meu anjinho! Sua sugar baby nordestina te ama e vai te amar pra sempre.", foto:"aniversario.jpg", audio:"aniversario.mp3" }
+  aniversario: { texto:"🥳 Eu não poderia nunca deixar de lembrar que hoje (23/09) é o dia especial do amor da minha vida. Meu nenenzinho ta fazendo 31 aninhos, e eu estou muito orgulhosa de vc amor. Feliz dia, meu anjinho! Sua sugar baby nordestina te ama e vai te amar pra sempre.", foto:"aniversario.jpg", audio:"aniversario.mp3" },
   playlist: { texto: "🎵 Abrindo nossa playlist de amor 💕", foto: "primeirobeijo.jpg", audio: null }
 };
 
@@ -371,8 +371,15 @@ function triggerAniversarioEffects(){
 
 <!-- ESTILOS DO PLAYER -->
 <style>
-  #overlay-player { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 200; }
-  .hidden { display: none; }
+  #overlay-player { 
+    position: fixed; 
+    inset: 0; 
+    background: rgba(0,0,0,0.7); 
+    display: none; 
+    align-items: center; 
+    justify-content: center; 
+    z-index: 200; 
+  }
 
   .player-container {
     background: #fff; color: #222; border-radius: 20px; padding: 18px; width: 320px; text-align: center; position: relative; box-shadow: 0 6px 30px rgba(0,0,0,0.6);
