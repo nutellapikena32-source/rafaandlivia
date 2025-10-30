@@ -266,49 +266,59 @@ function typeOutput(text,onComplete){
 }
 
 // ===== EVENTO ENTER =====
-input.addEventListener("keydown", e=>{
-  if(e.key==="Enter"){
-    const valor=input.value.trim().toLowerCase();
-    const cmd=comandos[valor];
-    if(cmd){ 
-      typeOutput(`> ${input.value}\n`, newLine=>{
-        if(cmd.foto){
-          const img=document.createElement("img");
-          img.src=cmd.foto;
-          img.className="command-image";
+input.addEventListener("keydown", e => {
+  if (e.key === "Enter") {
+    const valor = input.value.trim().toLowerCase();
+    const cmd = comandos[valor];
+
+    if (valor === "playlist") {
+      // comando especial da playlist
+      typeOutput(`> ${input.value}\nAbrindo nossa playlist de amor 💖`, () => {
+        openPlaylist();
+      });
+
+    } else if (cmd) {
+      // comandos normais
+      typeOutput(`> ${input.value}\n`, newLine => {
+        if (cmd.foto) {
+          const img = document.createElement("img");
+          img.src = cmd.foto;
+          img.className = "command-image";
           newLine.appendChild(img);
         }
-        if(cmd.audio){
-          if(currentAudio){ currentAudio.pause(); currentAudio.currentTime=0; }
-          currentAudio=new Audio(cmd.audio);
+        if (cmd.audio) {
+          if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; }
+          currentAudio = new Audio(cmd.audio);
           currentAudio.play();
         }
 
-        if(valor==="diasjuntos"){
-          const contador=document.createElement("div");
-          contador.id="contador";
+        if (valor === "diasjuntos") {
+          const contador = document.createElement("div");
+          contador.id = "contador";
           newLine.appendChild(contador);
           atualizarContador();
         } else {
-          let i=0;
-          function typeTxt(){
-            if(i<cmd.texto.length){
-              newLine.innerHTML+=cmd.texto[i++];
-              terminal.scrollTop=terminal.scrollHeight;
-              setTimeout(typeTxt,20);
+          let i = 0;
+          function typeTxt() {
+            if (i < cmd.texto.length) {
+              newLine.innerHTML += cmd.texto[i++];
+              terminal.scrollTop = terminal.scrollHeight;
+              setTimeout(typeTxt, 20);
             }
           }
           typeTxt();
         }
 
-        if(valor === "aniversario") triggerAniversarioEffects();
-      }); // <-- fecha typeOutput de comandos existentes
-    
-     } else if (valor === "playlist") {
-      // Comando playlist: primeiro escreve no terminal, depois abre o player
-      typeOutput(`> ${input.value}\nAbrindo nossa playlist de amor 💖`, () => {
-        openPlaylist();
+        if (valor === "aniversario") triggerAniversarioEffects();
       });
+
+    } else {
+      typeOutput(`> ${input.value}\nComando não encontrado 💔. Digita algum comando do menu.`);
+    }
+
+    input.value = "";
+  }
+});
 
     } else {
       typeOutput(`> ${input.value}\nComando não encontrado 💔. Digita algum comando do menu.`);
