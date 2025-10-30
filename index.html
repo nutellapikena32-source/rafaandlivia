@@ -145,7 +145,6 @@
   }
 }
 
-  }
 </style>
 </head>
 <body>
@@ -272,13 +271,11 @@ input.addEventListener("keydown", e => {
     const cmd = comandos[valor];
 
     if (valor === "playlist") {
-      // comando especial da playlist
       typeOutput(`> ${input.value}\nAbrindo nossa playlist de amor 💖`, () => {
         openPlaylist();
       });
 
     } else if (cmd) {
-      // comandos normais
       typeOutput(`> ${input.value}\n`, newLine => {
         if (cmd.foto) {
           const img = document.createElement("img");
@@ -317,13 +314,6 @@ input.addEventListener("keydown", e => {
     }
 
     input.value = "";
-  }
-});
-
-    } else {
-      typeOutput(`> ${input.value}\nComando não encontrado 💔. Digita algum comando do menu.`);
-    }
-    input.value="";
   }
 });
 
