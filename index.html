@@ -185,6 +185,7 @@
       <p>diasjuntos</p>
       <p>aniversario</p>
       <p>playlist</p>
+      <p>segundavinda</p>
     </div>
   </div>
 </div>
@@ -220,7 +221,7 @@ startBtn.addEventListener("click",()=>{
     const angle=Math.random()*2*Math.PI;
     const distance=50+Math.random()*100;
     c.style.transform=`translate(${Math.cos(angle)*distance}px, ${Math.sin(angle)*distance}px)`;
-    c.innerText=["💖","❤️","💜","💙"][Math.floor(Math.random()*4)];
+    c.innerText=["⚽","🤍","🖤","💙"][Math.floor(Math.random()*4)];
     document.body.appendChild(c);
     setTimeout(()=>c.remove(),2000);
   }
@@ -244,7 +245,8 @@ const comandos = {
   textinho: { texto:"🥰 Meu amor, você não sabe a alegria que é pra mim poder te ter comigo. Vc foi a melhor coisa que me aconteceu, a melhor pessoa que já conheci, e quero poder colecionar cada vez mais momentos juntos e te proporcionar tudo que você merece. Eu te amo mais que tudo nesse mundo, e ter você comigo significa que estarei bem e que nada vai poder me abalar. 💞💜💖", foto:"textinho.jpg", audio:"textinho.mp3" },
   diasjuntos: { texto:"Awn que fofo, estamos juntinhos há:", foto:"diasjuntos.jpg", audio:"diasjuntos.mp3" },
   aniversario: { texto:"🥳 Eu não poderia nunca deixar de lembrar que esse dia (23/09, NAO ERREI KJJKJK) é o dia especial do amor da minha vida. Meu nenenzinho ta fazendo 31 aninhos, e eu estou muito orgulhosa de vc amor. Feliz dia, meu anjinho! Sua sugar baby nordestina te ama e vai te amar pra sempre.", foto:"aniversario.jpg", audio:"aniversario.mp3" },
-  playlist: { texto: "🎵 Abrindo nossa playlist de amor 💕", foto: "primeirobeijo.jpg", audio: null }
+  playlist: { texto: "🎵 Abrindo nossa playlist de amor 💕", foto: "primeirobeijo.jpg", audio: null },
+  segundavinda: { texto: "Na segunda viagem que Rafa fez pra CG, nós nos divertimos muuuuito (hehe), fizemos um piercing no tragus juntos :3 colecionamos, novamente, momentos maravilhosos e experiências novas, experiências essas que provam como nosso amor vai muito além do prazer, mas chega a completar a alma um do outro com excelência. eu te amo, rafa. pra sempre vou te amar.", foto: ["segundaviagem1.jpg", "segundaviagem2.jpg", "segundaviagem3.jpg"], audio: null }
 };
 
 let currentAudio=null;
@@ -277,12 +279,23 @@ input.addEventListener("keydown", e => {
 
     } else if (cmd) {
       typeOutput(`> ${input.value}\n`, newLine => {
-        if (cmd.foto) {
-          const img = document.createElement("img");
-          img.src = cmd.foto;
-          img.className = "command-image";
-          newLine.appendChild(img);
-        }
+       if (cmd.foto) {
+  if (Array.isArray(cmd.foto)) {
+    // Se for várias imagens
+    cmd.foto.forEach(src => {
+      const img = document.createElement("img");
+      img.src = src;
+      img.className = "command-image";
+      newLine.appendChild(img);
+    });
+  } else {
+    // Se for só uma imagem
+    const img = document.createElement("img");
+    img.src = cmd.foto;
+    img.className = "command-image";
+    newLine.appendChild(img);
+  }
+}
         if (cmd.audio) {
           if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; }
           currentAudio = new Audio(cmd.audio);
