@@ -191,6 +191,8 @@
 </div>
 
 <script>
+document.addEventListener("DOMContentLoaded", () => {
+
 const intro=document.getElementById("intro");
 const startBtn=document.getElementById("startBtn");
 const main=document.getElementById("main");
@@ -346,7 +348,10 @@ function triggerAniversarioEffects(){
     setTimeout(()=>confetti.remove(),2000);
   }
 }
+
+}); // fecha o DOMContentLoaded
 </script>
+  
   <!-- ===== INÍCIO: PLAYER DE PLAYLIST (colar antes do </body>) ===== -->
 <!-- POP-UP DO PLAYER -->
 <div id="overlay-player" class="hidden">
