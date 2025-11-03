@@ -204,7 +204,7 @@ document.addEventListener("mousemove", e=>{
   heart.style.left=e.pageX+"px";
   heart.style.top=e.pageY+"px";
   heart.style.fontSize=(10+Math.random()*10)+"px";
-  heart.innerText=["💖","❤️","💜","💙"][Math.floor(Math.random()*4)];
+  heart.innerText=["⚽","🤍","🖤","💙"][Math.floor(Math.random()*4)];
   document.body.appendChild(heart);
   setTimeout(()=>heart.remove(),2000);
 });
@@ -221,7 +221,7 @@ startBtn.addEventListener("click",()=>{
     const angle=Math.random()*2*Math.PI;
     const distance=50+Math.random()*100;
     c.style.transform=`translate(${Math.cos(angle)*distance}px, ${Math.sin(angle)*distance}px)`;
-    c.innerText=["⚽","🤍","🖤","💙"][Math.floor(Math.random()*4)];
+    c.innerText=["💖","❤️","💜","💙"][Math.floor(Math.random()*4)];
     document.body.appendChild(c);
     setTimeout(()=>c.remove(),2000);
   }
