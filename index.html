@@ -280,21 +280,24 @@ input.addEventListener("keydown", e => {
     } else if (cmd) {
       typeOutput(`> ${input.value}\n`, newLine => {
        if (cmd.foto) {
+  const imgContainer = document.createElement("div");
+  imgContainer.className = "image-gallery";
+
   if (Array.isArray(cmd.foto)) {
-    // Se for várias imagens
     cmd.foto.forEach(src => {
       const img = document.createElement("img");
       img.src = src;
       img.className = "command-image";
-      newLine.appendChild(img);
+      imgContainer.appendChild(img);
     });
   } else {
-    // Se for só uma imagem
     const img = document.createElement("img");
     img.src = cmd.foto;
     img.className = "command-image";
-    newLine.appendChild(img);
+    imgContainer.appendChild(img);
   }
+
+  newLine.appendChild(imgContainer);
 }
         if (cmd.audio) {
           if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; }
