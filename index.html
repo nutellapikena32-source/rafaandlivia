@@ -160,8 +160,8 @@
   <div class="container">
     <div id="terminal">
       <div class="title">💙 Console do Amor de Rafa e Lívia 💙</div>
-      <div class="output">Aqui é o lugar onde está eternizado os momentos especiais de Rafa e Lívia 😍</div>
-      <div class="output">Digite os comandos do menu para acessar cada um deles!</div>
+      <div class="output">Bem-vindo, Rafa! Aqui você pode acessar nossos momentos mais fofos 😍</div>
+      <div class="output">Digite os comandos do menu para ter uma surpresa fofa!</div>
       <div id="input-container">
         <span class="prompt">></span>
         <input id="input" autofocus>
@@ -185,14 +185,11 @@
       <p>diasjuntos</p>
       <p>aniversario</p>
       <p>playlist</p>
-      <p>segunda viagem</p>
     </div>
   </div>
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-
 const intro=document.getElementById("intro");
 const startBtn=document.getElementById("startBtn");
 const main=document.getElementById("main");
@@ -247,8 +244,7 @@ const comandos = {
   textinho: { texto:"🥰 Meu amor, você não sabe a alegria que é pra mim poder te ter comigo. Vc foi a melhor coisa que me aconteceu, a melhor pessoa que já conheci, e quero poder colecionar cada vez mais momentos juntos e te proporcionar tudo que você merece. Eu te amo mais que tudo nesse mundo, e ter você comigo significa que estarei bem e que nada vai poder me abalar. 💞💜💖", foto:"textinho.jpg", audio:"textinho.mp3" },
   diasjuntos: { texto:"Awn que fofo, estamos juntinhos há:", foto:"diasjuntos.jpg", audio:"diasjuntos.mp3" },
   aniversario: { texto:"🥳 Eu não poderia nunca deixar de lembrar que esse dia (23/09, NAO ERREI KJJKJK) é o dia especial do amor da minha vida. Meu nenenzinho ta fazendo 31 aninhos, e eu estou muito orgulhosa de vc amor. Feliz dia, meu anjinho! Sua sugar baby nordestina te ama e vai te amar pra sempre.", foto:"aniversario.jpg", audio:"aniversario.mp3" },
-  playlist: { texto: "🎵 Abrindo nossa playlist de amor 💕", foto: "primeirobeijo.jpg", audio: null },
-  segunda viagem: { texto: "Na segunda viagem que Rafa fez pra CG, nós nos divertimos muuuuito (hehe) e fizemos um piercing no tragus juntos :3 colecionamos, novamente, momentos maravilhosos e experiências novas, experiências essas que provam como nosso amor vai muito além do prazer, mas chega a completar a alma um do outro com excelência. eu te amo, rafa. pra sempre vou te amar.", foto: ["segundaviagem1.jpg", "segundaviagem2.jpg", "segundaviagem3.jpg"], audio: null }
+  playlist: { texto: "🎵 Abrindo nossa playlist de amor 💕", foto: "primeirobeijo.jpg", audio: null }
 };
 
 let currentAudio=null;
@@ -348,10 +344,7 @@ function triggerAniversarioEffects(){
     setTimeout(()=>confetti.remove(),2000);
   }
 }
-
-}); // fecha o DOMContentLoaded
 </script>
-  
   <!-- ===== INÍCIO: PLAYER DE PLAYLIST (colar antes do </body>) ===== -->
 <!-- POP-UP DO PLAYER -->
 <div id="overlay-player" class="hidden">
