@@ -186,6 +186,7 @@
       <p>aniversario</p>
       <p>playlist</p>
       <p>segundavinda</p>
+      <p>gremio</p>
     </div>
   </div>
 </div>
@@ -246,7 +247,8 @@ const comandos = {
   diasjuntos: { texto:"Awn que fofo, estamos juntinhos há:", foto:"diasjuntos.jpg", audio:"diasjuntos.mp3" },
   aniversario: { texto:"🥳 Eu não poderia nunca deixar de lembrar que esse dia (23/09, NAO ERREI KJJKJK) é o dia especial do amor da minha vida. Meu nenenzinho ta fazendo 31 aninhos, e eu estou muito orgulhosa de vc amor. Feliz dia, meu anjinho! Sua sugar baby nordestina te ama e vai te amar pra sempre.", foto:"aniversario.jpg", audio:"aniversario.mp3" },
   playlist: { texto: "🎵 Abrindo nossa playlist de amor 💕", foto: "primeirobeijo.jpg", audio: null },
-  segundavinda: { texto: "Na segunda viagem que Rafa fez pra CG, nós nos divertimos muuuuito (hehe), fizemos um piercing no tragus juntos :3 colecionamos, novamente, momentos maravilhosos e experiências novas, experiências essas que provam como nosso amor vai muito além do prazer, mas chega a completar a alma um do outro com excelência. eu te amo, rafa. pra sempre vou te amar.", foto: ["segundaviagem1.jpg", "segundaviagem2.jpg", "segundaviagem3.jpg"], audio: null }
+  segundavinda: { texto: "Na segunda viagem que Rafa fez pra CG, nós nos divertimos muuuuito (hehe), fizemos um piercing no tragus juntos :3 colecionamos, novamente, momentos maravilhosos e experiências novas, experiências essas que provam como nosso amor vai muito além do prazer, mas chega a completar a alma um do outro com excelência. eu te amo, rafa. pra sempre vou te amar.", foto: ["segundaviagem1.jpg", "segundaviagem2.jpg", "segundaviagem3.jpg"], audio: null },
+  gremio: { texto: "", foto: null, audio: "gremio.mp3" }
 };
 
 let currentAudio=null;
@@ -279,6 +281,18 @@ input.addEventListener("keydown", e => {
 
     } else if (cmd) {
       typeOutput(`> ${input.value}\n`, newLine => {
+          if (valor === "gremio") {
+        // toca o áudio
+        if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; }
+        currentAudio = new Audio("gremio.mp3");
+        currentAudio.play();
+
+        // ativa a chuva
+        triggerGremioRain();
+
+        // não precisa exibir texto nem imagem, então para aqui
+        return;
+      }
        if (cmd.foto) {
   const imgContainer = document.createElement("div");
   imgContainer.className = "image-gallery";
@@ -346,6 +360,32 @@ function atualizarContador(){
   if(contador) contador.innerText=`${dias} dias, ${horas}h ${minutos}m ${segundos}s`;
 }
 setInterval(atualizarContador,1000);
+
+// ===== CHUVINHA DO GRÊMIO =====
+function triggerGremioRain() {
+  const duration = 10000; // 10 segundos
+  const startTime = Date.now();
+
+  function createEmoji() {
+    const emoji = document.createElement("div");
+    emoji.className = "heart"; // já aproveita a classe da chuva existente
+    emoji.style.left = Math.random() * window.innerWidth + "px";
+    emoji.style.top = "-30px";
+    emoji.style.fontSize = 20 + Math.random() * 20 + "px";
+    emoji.innerText = ["⚽", "💙", "🤍"][Math.floor(Math.random() * 3)];
+    document.body.appendChild(emoji);
+    setTimeout(() => emoji.remove(), 4000);
+  }
+
+  const interval = setInterval(() => {
+    if (Date.now() - startTime > duration) {
+      clearInterval(interval);
+    } else {
+      for (let i = 0; i < 5; i++) createEmoji();
+    }
+  }, 200); // cai um punhadinho de emojis a cada 0.2s
+}
+
 
 // ===== EFETOS ANIVERSARIO =====
 function triggerAniversarioEffects(){
@@ -522,7 +562,7 @@ box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
     closeBtn.addEventListener('click', () => {
       overlay.classList.add('hidden');
       audio.pause();
-      audio.currentTime = 0;
+      audio.currentTime = 0; // <-- aqui fecha certinho
       playBtn.textContent = '▶️';
     });
 
